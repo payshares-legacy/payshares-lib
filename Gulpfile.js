@@ -20,17 +20,17 @@ gulp.task('build', [ ], function(callback) {
     cache: true,
     entry: './src/js/ripple/index.js',
     output: {
-      library: 'stellar',
+      library: 'payshares',
       path: './build/',
-      filename: 'stellar-lib.js'
+      filename: 'payshares-lib.js'
     },
   }, callback);
 });
 
 gulp.task('build-min', [ 'build' ], function(callback) {
-  return gulp.src('./build/stellar-lib.js')
+  return gulp.src('./build/payshares-lib.js')
   .pipe(uglify())
-  .pipe(rename('stellar-lib-min.js'))
+  .pipe(rename('payshares-lib-min.js'))
   .pipe(gulp.dest('./build/'));
 });
 
@@ -39,9 +39,9 @@ gulp.task('build-debug', [ ], function(callback) {
     cache: true,
     entry: './src/js/ripple/index.js',
     output: {
-      library: 'stellar',
+      library: 'payshares',
       path: './build/',
-      filename: 'stellar-lib-debug.js'
+      filename: 'payshares-lib-debug.js'
     },
     debug: true,
     devtool: 'eval'

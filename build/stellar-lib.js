@@ -1,4 +1,4 @@
-var stellar =
+var payshares =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	
 /******/ 	// The module cache
@@ -673,7 +673,7 @@ var stellar =
 	};
 
 	/**
-	 * Reconnect to the Stellar network immediately.
+	 * Reconnect to the Payshares network immediately.
 	 *
 	 * @api public
 	 */
@@ -5943,8 +5943,8 @@ var stellar =
 	var ACCOUNT_ONE  = UInt160.ACCOUNT_ONE  = 'ggggggggggggggggggggBZbvji';
 	var HEX_ZERO     = UInt160.HEX_ZERO     = '0000000000000000000000000000000000000000';
 	var HEX_ONE      = UInt160.HEX_ONE      = '0000000000000000000000000000000000000001';
-	var STR_ZERO     = UInt160.STR_ZERO     = utils.hexToString(HEX_ZERO);
-	var STR_ONE      = UInt160.STR_ONE      = utils.hexToString(HEX_ONE);
+	var XPR_ZERO     = UInt160.XPR_ZERO     = utils.hexToString(HEX_ZERO);
+	var XPR_ONE      = UInt160.XPR_ONE      = utils.hexToString(HEX_ONE);
 
 	UInt160.prototype.set_version = function(j) {
 	  this._version_byte = j;
@@ -6041,8 +6041,8 @@ var stellar =
 
 	var HEX_ZERO = UInt256.HEX_ZERO = '00000000000000000000000000000000' + '00000000000000000000000000000000';
 	var HEX_ONE  = UInt256.HEX_ONE  = '00000000000000000000000000000000' + '00000000000000000000000000000001';
-	var STR_ZERO = UInt256.STR_ZERO = utils.hexToString(HEX_ZERO);
-	var STR_ONE  = UInt256.STR_ONE  = utils.hexToString(HEX_ONE);
+	var XPR_ZERO = UInt256.XPR_ZERO = utils.hexToString(HEX_ZERO);
+	var XPR_ONE  = UInt256.XPR_ONE  = utils.hexToString(HEX_ONE);
 
 	exports.UInt256 = UInt256;
 
@@ -8119,7 +8119,7 @@ var stellar =
 	  tecINSUF_RESERVE_LINE: 122,
 	  tecINSUF_RESERVE_OFFER: 123,
 	  tecNO_DST: 124,
-	  tecNO_DST_INSUF_STR: 125,
+	  tecNO_DST_INSUF_XPR: 125,
 	  tecNO_LINE_INSUF_RESERVE: 126,
 	  tecNO_LINE_REDUNDANT: 127,
 	  tecPATH_DRY: 128,
@@ -9279,11 +9279,11 @@ var stellar =
 	};
 
 	OrderBook.prototype.trade = function(type) {
-	  var tradeStr = '0'
+	  var tradeXpr = '0'
 	  + ((this['_currency_' + type] === 'STR') ? '' : '/'
 	     + this['_currency_' + type ] + '/'
 	     + this['_issuer_' + type]);
-	  return Amount.from_json(tradeStr);
+	  return Amount.from_json(tradeXpr);
 	};
 
 	/**
@@ -10837,14 +10837,14 @@ var stellar =
 	  switch (j) {
 	    case undefined:
 	      case '0':
-	      case this.constructor.STR_ZERO:
+	      case this.constructor.XPR_ZERO:
 	      case this.constructor.ACCOUNT_ZERO:
 	      case this.constructor.HEX_ZERO:
 	      this._value  = BigInteger.valueOf();
 	      break;
 
 	    case '1':
-	      case this.constructor.STR_ONE:
+	      case this.constructor.XPR_ONE:
 	      case this.constructor.ACCOUNT_ONE:
 	      case this.constructor.HEX_ONE:
 	      this._value  = new BigInteger([1]);
@@ -17643,8 +17643,8 @@ var stellar =
 
 	var HEX_ZERO = UInt128.HEX_ZERO = '00000000000000000000000000000000';
 	var HEX_ONE  = UInt128.HEX_ONE  = '00000000000000000000000000000000';
-	var STR_ZERO = UInt128.STR_ZERO = utils.hexToString(HEX_ZERO);
-	var STR_ONE  = UInt128.STR_ONE  = utils.hexToString(HEX_ONE);
+	var XPR_ZERO = UInt128.XPR_ZERO = utils.hexToString(HEX_ZERO);
+	var XPR_ONE  = UInt128.XPR_ONE  = utils.hexToString(HEX_ONE);
 
 	exports.UInt128 = UInt128;
 

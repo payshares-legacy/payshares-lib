@@ -1,10 +1,10 @@
 # How to contribute
 
-Your contributions to the Stellar network will help improve the world’s financial
+Your contributions to the Payshares network will help improve the world’s financial
 infrastructure, faster.
 
 We want to make it as easy as possible to contribute changes that
-help the Stellar network grow and thrive. There are a few guidelines that we
+help the Payshares network grow and thrive. There are a few guidelines that we
 ask contributors to follow so that we can merge your changes quickly.
 
 ## Getting Started
@@ -23,9 +23,9 @@ ask contributors to follow so that we can merge your changes quickly.
 
 ## Submitting Changes
 
-* <a href="https://www.clahub.com/agreements/stellar/stellar-lib">Sign the Contributor License Agreement</a>.
+* <a href="https://www.clahub.com/agreements/payshares/payshares-lib">Sign the Contributor License Agreement</a>.
 * Push your changes to a topic branch in your fork of the repository.
-* Submit a pull request to the [stellar-lib repository](https://github.com/stellar/stellar-lib) in the Stellar 
+* Submit a pull request to the [payshares-lib repository](https://github.com/payshares/payshares-lib) in the Payshares 
 organization.
  * Include a descriptive [commit message](https://github.com/erlang/otp/wiki/Writing-good-commit-messages).
  * Changes contributed via pull request should focus on a single issue at a time.
@@ -44,11 +44,11 @@ an issue number.
 
 # Additional Resources
 
-* [Bug tracker (Github)](https://github.com/stellar/stellar-lib/issues)
-* <a href="https://www.clahub.com/agreements/stellar/stellar-lib">Contributor License Agreement</a>
-* [Explore the API](https://www.stellar.org/api/)
-* [Readme for stellar-lib](https://github.com/stellar/stellar-lib/blob/master/README.md)
-* #stellar-dev IRC channel on freenode.org
+* [Bug tracker (Github)](https://github.com/payshares/payshares-lib/issues)
+* <a href="https://www.clahub.com/agreements/payshares/payshares-lib">Contributor License Agreement</a>
+* [Explore the API](https://www.payshares.org/api/)
+* [Readme for payshares-lib](https://github.com/payshares/payshares-lib/blob/master/README.md)
+* #payshares-dev IRC channel on freenode.org
 
 
 This document is inspired by:

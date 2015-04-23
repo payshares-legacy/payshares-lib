@@ -17,7 +17,7 @@ UInt128.prototype.constructor = UInt128;
 
 var HEX_ZERO = UInt128.HEX_ZERO = '00000000000000000000000000000000';
 var HEX_ONE  = UInt128.HEX_ONE  = '00000000000000000000000000000000';
-var STR_ZERO = UInt128.STR_ZERO = utils.hexToString(HEX_ZERO);
-var STR_ONE  = UInt128.STR_ONE  = utils.hexToString(HEX_ONE);
+var XPR_ZERO = UInt128.XPR_ZERO = utils.hexToString(HEX_ZERO);
+var XPR_ONE  = UInt128.XPR_ONE  = utils.hexToString(HEX_ONE);
 
 exports.UInt128 = UInt128;

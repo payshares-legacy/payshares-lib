@@ -22,12 +22,12 @@ UInt160.width = 20;
 UInt160.prototype = extend({}, UInt.prototype);
 UInt160.prototype.constructor = UInt160;
 
-var ACCOUNT_ZERO = UInt160.ACCOUNT_ZERO = 'ggggggggggggggggggggghoLvTp';
-var ACCOUNT_ONE  = UInt160.ACCOUNT_ONE  = 'ggggggggggggggggggggBZbvji';
+var ACCOUNT_ZERO = UInt160.ACCOUNT_ZERO = 'xxxxxxxxxxxxxxxxxxxxxhoLvTp';
+var ACCOUNT_ONE  = UInt160.ACCOUNT_ONE  = 'xxxxxxxxxxxxxxxxxxxxBZbvji';
 var HEX_ZERO     = UInt160.HEX_ZERO     = '0000000000000000000000000000000000000000';
 var HEX_ONE      = UInt160.HEX_ONE      = '0000000000000000000000000000000000000001';
-var STR_ZERO     = UInt160.STR_ZERO     = utils.hexToString(HEX_ZERO);
-var STR_ONE      = UInt160.STR_ONE      = utils.hexToString(HEX_ONE);
+var XPR_ZERO     = UInt160.XPR_ZERO     = utils.hexToString(HEX_ZERO);
+var XPR_ONE      = UInt160.XPR_ONE      = utils.hexToString(HEX_ONE);
 
 UInt160.prototype.set_version = function(j) {
   this._version_byte = j;

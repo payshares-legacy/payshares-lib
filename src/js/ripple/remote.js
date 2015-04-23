@@ -560,7 +560,7 @@ Remote.prototype.disconnect = function(callback) {
 };
 
 /**
- * Reconnect to the Stellar network immediately.
+ * Reconnect to the Payshares network immediately.
  *
  * @api public
  */
@@ -1461,7 +1461,7 @@ Remote.prototype.requestBookOffers = function(gets, pays, taker, callback) {
     currency: Currency.json_rewrite(gets.currency)
   };
 
-  if (request.message.taker_gets.currency !== 'STR') {
+  if (request.message.taker_gets.currency !== 'XPR') {
     request.message.taker_gets.issuer = UInt160.json_rewrite(gets.issuer);
   }
 
@@ -1469,7 +1469,7 @@ Remote.prototype.requestBookOffers = function(gets, pays, taker, callback) {
     currency: Currency.json_rewrite(pays.currency)
   };
 
-  if (request.message.taker_pays.currency !== 'STR') {
+  if (request.message.taker_pays.currency !== 'XPR') {
     request.message.taker_pays.issuer = UInt160.json_rewrite(pays.issuer);
   }
 
@@ -1779,7 +1779,7 @@ Remote.prototype.createPathFind = function(src_account, dst_account, dst_amount,
 };
 
 Remote.prepareTrade = function(currency, issuer) {
-  return currency + (currency === 'STR' ? '' : ('/' + issuer));
+  return currency + (currency === 'XPR' ? '' : ('/' + issuer));
 };
 
 /**

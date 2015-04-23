@@ -139,11 +139,11 @@ OrderBook.prototype.to_json = function () {
     }
   };
 
-  if (this._currency_gets !== 'STR') {
+  if (this._currency_gets !== 'XPR') {
     json.taker_gets.issuer = this._issuer_gets;
   }
 
-  if (this._currency_pays !== 'STR') {
+  if (this._currency_pays !== 'XPR') {
     json.taker_pays.issuer = this._issuer_pays;
   }
 
@@ -160,19 +160,19 @@ OrderBook.prototype.is_valid = function () {
   // XXX Should check for same currency (non-native) && same issuer
   return (
     Currency.is_valid(this._currency_pays) &&
-    (this._currency_pays === 'STR' || UInt160.is_valid(this._issuer_pays)) &&
+    (this._currency_pays === 'XPR' || UInt160.is_valid(this._issuer_pays)) &&
     Currency.is_valid(this._currency_gets) &&
-    (this._currency_gets === 'STR' || UInt160.is_valid(this._issuer_gets)) &&
-    !(this._currency_pays === 'STR' && this._currency_gets === 'STR')
+    (this._currency_gets === 'XPR' || UInt160.is_valid(this._issuer_gets)) &&
+    !(this._currency_pays === 'XPR' && this._currency_gets === 'XPR')
   );
 };
 
 OrderBook.prototype.trade = function(type) {
-  var tradeStr = '0'
-  + ((this['_currency_' + type] === 'STR') ? '' : '/'
+  var tradeXpr = '0'
+  + ((this['_currency_' + type] === 'XPR') ? '' : '/'
      + this['_currency_' + type ] + '/'
      + this['_issuer_' + type]);
-  return Amount.from_json(tradeStr);
+  return Amount.from_json(tradeXpr);
 };
 
 /**

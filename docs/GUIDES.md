@@ -1,10 +1,10 @@
-#`stellar-lib` Guides
+#`payshares-lib` Guides
 
-This file provides step-by-step walkthroughs for some of the most common usages of `stellar-lib`.
+This file provides step-by-step walkthroughs for some of the most common usages of `payshares-lib`.
 
 ###Guides in this document:
 
-1. [Connecting to the Stellar network with `Remote`](GUIDES.md#1-connecting-to-the-stellar-network-with-remote)
+1. [Connecting to the Payshares network with `Remote`](GUIDES.md#1-connecting-to-the-payshares-network-with-remote)
 2. [Using `Remote` functions and `Request` objects](GUIDES.md#2-using-remote-functions-and-request-objects)
 3. [Submitting a payment to the network](GUIDES.md#3-submitting-a-payment-to-the-network)
    * [A note on transaction fees](GUIDES.md#a-note-on-transaction-fees)
@@ -14,19 +14,19 @@ This file provides step-by-step walkthroughs for some of the most common usages 
 
 ###Also see:
 
-1. [The `stellar-lib` README](../README.md)
-2. [The `stellar-lib` API Reference](REFERENCE.md)
+1. [The `payshares-lib` README](../README.md)
+2. [The `payshares-lib` API Reference](REFERENCE.md)
 
-##1. Connecting to the Stellar network with `Remote`
+##1. Connecting to the Payshares network with `Remote`
 
-1. [Get `stellar-lib`](README.md#getting-stellar-lib)
-2. Load the `stellar-lib` module into a Node.js file or webpage:
+1. [Get `payshares-lib`](README.md#getting-payshares-lib)
+2. Load the `payshares-lib` module into a Node.js file or webpage:
   ```js
-  /* Loading stellar-lib with Node.js */
-  var Remote = require('stellar-lib').Remote;
+  /* Loading payshares-lib with Node.js */
+  var Remote = require('payshares-lib').Remote;
 
-  /* Loading stellar-lib in a webpage */
-  // var Remote = stellar.Remote;
+  /* Loading payshares-lib in a webpage */
+  // var Remote = payshares.Remote;
   ```
 3. Create a new `Remote` and connect to the network:
   ```js
@@ -78,21 +78,21 @@ __NOTE:__ See the API Reference for available [`Remote` functions](REFERENCE.md#
 
 ##3. Submitting a payment to the network
 
-Submitting a payment transaction to the Stellar network involves connecting to a `Remote`, creating a transaction, signing it with the user's secret, and submitting it to the `stellard` server. Note that the `Amount` module is used to convert human-readable amounts like '1XRP' or '10.50USD' to the type of Amount object used by the Stellar network.
+Submitting a payment transaction to the Payshares network involves connecting to a `Remote`, creating a transaction, signing it with the user's secret, and submitting it to the `paysharesd` server. Note that the `Amount` module is used to convert human-readable amounts like '1XRP' or '10.50USD' to the type of Amount object used by the Payshares network.
 
 ```js
-/* Loading stellar-lib Remote and Amount modules in Node.js */ 
-var Remote = require('stellar-lib').Remote;
-var Amount = require('stellar-lib').Amount;
+/* Loading payshares-lib Remote and Amount modules in Node.js */ 
+var Remote = require('payshares-lib').Remote;
+var Amount = require('payshares-lib').Amount;
 
-/* Loading stellar-lib Remote and Amount modules in a webpage */
-// var Remote = stellar.Remote;
-// var Amount = stellar.Amount;
+/* Loading payshares-lib Remote and Amount modules in a webpage */
+// var Remote = payshares.Remote;
+// var Amount = payshares.Amount;
 
 var MY_ADDRESS = 'rrrMyAddress';
 var MY_SECRET  = 'secret';
 var RECIPIENT  = 'rrrRecipient';
-var AMOUNT     = Amount.from_human('1STR');
+var AMOUNT     = Amount.from_human('1XPR');
 
 var remote = new Remote({ /* Remote options */ });
 
@@ -115,9 +115,9 @@ remote.connect(function() {
 
 ###A note on transaction fees
 
-A full description of network transaction fees can be found on the [Stellar Wiki](https://wiki.stellar.org/Transaction_Fee).
+A full description of network transaction fees can be found on the [Payshares Wiki](https://wiki.payshares.org/Transaction_Fee).
 
-In short, transaction fees are very small amounts (on the order of ~10) of [Stroop](https://wiki.stellar.org/Stroop) spent with every transaction. They are largely used to account for network load and prevent spam. With `stellar-lib`, transaction fees are calculated locally by default and the fee you are willing to pay is submitted along with your transaction.
+In short, transaction fees are very small amounts (on the order of ~10) of [Stroop](https://wiki.payshares.org/Stroop) spent with every transaction. They are largely used to account for network load and prevent spam. With `payshares-lib`, transaction fees are calculated locally by default and the fee you are willing to pay is submitted along with your transaction.
 
 Since the fee required for a transaction may change between the time when the original fee was calculated and the time when the transaction is submitted, it is wise to use the [`fee_cushion`](REFERENCE.md#1-remote-options) to ensure that the transaction will go through. For example, suppose the original fee calculated for a transaction was 10 stroop but at the instant the transaction is submitted the server is experiencing a higher load and it has raised its minimum fee to 12 stroop. Without a `fee_cushion`, this transaction would not be processed by the server, but with a `fee_cushion` of, say, 1.5 it would be processed and you would just pay the 2 extra stroop.
 
@@ -126,21 +126,21 @@ The [`max_fee`](REFERENCE.md#1-remote-options) option can be used to avoid submi
 
 ##4. Submitting a trade offer to the network
 
-Submitting a trade offer to the network is similar to submitting a payment transaction. Here is an example for a trade that expires in 24 hours where you are offering to sell 1 USD in exchange for 100 STR:
+Submitting a trade offer to the network is similar to submitting a payment transaction. Here is an example for a trade that expires in 24 hours where you are offering to sell 1 USD in exchange for 100 XPR:
 
 ```js
-/* Loading stellar-lib Remote and Amount modules in Node.js */ 
-var Remote = require('stellar-lib').Remote;
-var Amount = require('stellar-lib').Amount;
+/* Loading payshares-lib Remote and Amount modules in Node.js */ 
+var Remote = require('payshares-lib').Remote;
+var Amount = require('payshares-lib').Amount;
 
-/* Loading stellar-lib Remote and Amount modules in a webpage */
-// var Remote = stellar.Remote;
-// var Amount = stellar.Amount;
+/* Loading payshares-lib Remote and Amount modules in a webpage */
+// var Remote = payshares.Remote;
+// var Amount = payshares.Amount;
 
 var MY_ADDRESS = 'rrrMyAddress';
 var MY_SECRET  = 'secret';
 
-var BUY_AMOUNT = Amount.from_human('100STR');
+var BUY_AMOUNT = Amount.from_human('100XPR');
 var SELL_AMOUNT = Amount.from_human('1USD');
 
 // EXPIRATION must be a Date object, leave undefined to submit offer that won't expire
@@ -173,11 +173,11 @@ remote.connect(function() {
 In some (relatively rare) cases you may want to subscribe to the network event feed and listen for transactions and the ledger closings.
 
 ```js
- /* Loading stellar-lib with Node.js */
-  var Remote = require('stellar-lib').Remote;
+ /* Loading payshares-lib with Node.js */
+  var Remote = require('payshares-lib').Remote;
 
-  /* Loading stellar-lib in a webpage */
-  // var Remote = stellar.Remote;
+  /* Loading payshares-lib in a webpage */
+  // var Remote = payshares.Remote;
 
   var remote = new Remote({options});
 
@@ -188,13 +188,13 @@ In some (relatively rare) cases you may want to subscribe to the network event f
 
   function transactionListener (transaction_data) {
     // handle transaction_data
-    // see https://www.stellar.org/api/#api-subscribe for the format of transaction_data
+    // see https://www.payshares.org/api/#api-subscribe for the format of transaction_data
   }
 
   function ledgerListener (ledger_data) {
     // handle ledger_data
-    // see https://www.stellar.org/api/#api-subscribe for the format of ledger_data
+    // see https://www.payshares.org/api/#api-subscribe for the format of ledger_data
   }
 ```
-* https://https://www.stellar.org/api/#api-subscribe
+* https://https://www.payshares.org/api/#api-subscribe
 

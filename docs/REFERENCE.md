@@ -1,4 +1,4 @@
-#`stellar-lib` API Reference
+#`payshares-lib` API Reference
 
 __(More examples coming soon!)__
 
@@ -18,18 +18,18 @@ __(More examples coming soon!)__
 
 ###Also see:
 
-1. [The `stellar-lib` README](../README.md)
-2. [The `stellar-lib` GUIDES](GUIDES.md)
+1. [The `payshares-lib` README](../README.md)
+2. [The `payshares-lib` GUIDES](GUIDES.md)
 
 
 #1. `Remote` options
 
 ```js
-/* Loading stellar-lib with Node.js */
-var Remote = require('stellar-lib').Remote;
+/* Loading payshares-lib with Node.js */
+var Remote = require('payshares-lib').Remote;
 
-/* Loading stellar-lib in a webpage */
-// var Remote = stellar.Remote;
+/* Loading payshares-lib in a webpage */
+// var Remote = payshares.Remote;
 
 var remote = new Remote({options});
 ```
@@ -42,7 +42,7 @@ A new `Remote` can be created with the following options:
 + `trusted` truthy, if remote is trusted (boolean)
 + `local_fee` Set whether the transaction fee range will be set locally (boolean, default is true, see [A note on transaction fees](GUIDES.md#a-note-on-transaction-fees))
 + `fee_cushion` Extra fee multiplier to account for async fee changes (number, e.g. 1.5, see [A note on transaction fees](GUIDES.md#a-note-on-transaction-fees))
-+ `max_fee` Maximum acceptable transaction fee (number in [Stroop](https://wiki.stellar.org/Stroop), see [A note on transaction fees](GUIDES.md#a-note-on-transaction-fees))
++ `max_fee` Maximum acceptable transaction fee (number in [Stroop](https://wiki.payshares.org/Stroop), see [A note on transaction fees](GUIDES.md#a-note-on-transaction-fees))
 + `servers` Array of server objects of the following form:
 
 ```js
@@ -60,7 +60,7 @@ A new `Remote` can be created with the following options:
 
 ##Server info functions
 
-**[requestServerInfo([callback])](https://www.stellar.org/api/#api-server_info)**
+**[requestServerInfo([callback])](https://www.payshares.org/api/#api-server_info)**
 
 Returns information about the state of the server. If you are connected to multiple servers and want to select by a particular host, use `request.set_server`. Example:
 
@@ -79,11 +79,11 @@ request.request();
 ##Ledger query functions
 
 
-**[requestSubscribe(streams, [callback])](https://www.stellar.org/api/#api-subscribe)**
+**[requestSubscribe(streams, [callback])](https://www.payshares.org/api/#api-subscribe)**
 
 Start receiving selected streams from the server.
 
-**[requestUnsubscribe(streams, [callback])](https://www.stellar.org/api/#api-unsubscribe)**
+**[requestUnsubscribe(streams, [callback])](https://www.payshares.org/api/#api-unsubscribe)**
 
 Stop receiving selected streams from the server.
 
@@ -92,11 +92,11 @@ Stop receiving selected streams from the server.
 
 ##Transaction query functions
 
-**[requestTransactionEntry(hash, [ledger_hash], [callback])](https://www.stellar.org/api/#api-transaction_entry)**
+**[requestTransactionEntry(hash, [ledger_hash], [callback])](https://www.payshares.org/api/#api-transaction_entry)**
 
 Searches a particular ledger for a transaction hash. Default ledger is the open ledger.
 
-**[requestTx(hash, [callback])](https://www.stellar.org/api/#api-tx)**
+**[requestTx(hash, [callback])](https://www.payshares.org/api/#api-tx)**
 
 Searches ledger history for validated transaction hashes.
 
@@ -105,7 +105,7 @@ Searches ledger history for validated transaction hashes.
 
 ##Account query functions
 
-**[requestAccountInfo(account, [callback])](https://www.stellar.org/api/#api-account_info)**
+**[requestAccountInfo(account, [callback])](https://www.payshares.org/api/#api-account_info)**
 
 Return information about the specified account.
 
@@ -126,13 +126,13 @@ Return information about the specified account.
 }
 ```
 
-**[requestAccountLines(accountID, account_index, current, [callback])](https://www.stellar.org/api/#api-account_lines)**
+**[requestAccountLines(accountID, account_index, current, [callback])](https://www.payshares.org/api/#api-account_lines)**
 
-**[requestAccountOffers(accountID, account_index, current, [callback])](https://www.stellar.org/api/#api-account_offers)**
+**[requestAccountOffers(accountID, account_index, current, [callback])](https://www.payshares.org/api/#api-account_offers)**
 
 Return the specified account's outstanding offers.
 
-**[requestAccountTx(opts, [callback])](https://www.stellar.org/api/#api-account_tx)**
+**[requestAccountTx(opts, [callback])](https://www.payshares.org/api/#api-account_tx)**
 
 Fetch a list of transactions that applied to this account.
 
@@ -153,7 +153,7 @@ Options:
 
 **requestAccountBalance(account, ledger, [callback])**
 
-Get the balance for an account. Returns an [Amount](https://github.com/stellar/stellar-lib/blob/develop/src/js/ripple/amount.js) object.
+Get the balance for an account. Returns an [Amount](https://github.com/payshares/payshares-lib/blob/develop/src/js/ripple/amount.js) object.
 
 **requestAccountFlags(account, current, [callback])**
 
@@ -172,14 +172,14 @@ Return a request to get a ripple balance
 
 ##Order book query functions
 
-**[requestBookOffers(gets, pays, taker, [callback])](https://www.stellar.org/api/#api-book_offers)**
+**[requestBookOffers(gets, pays, taker, [callback])](https://www.payshares.org/api/#api-book_offers)**
 
 Return the offers for an order book as one or more pages.
 
 ```js
 var request = remote.request_book_offers({
   gets: {
-    'currency':'STR'
+    'currency':'XPR'
   },
   pays: {
     'currency':'USD',
@@ -195,28 +195,28 @@ request.request();
 
 ##Transaction submission functions
 
-**[requestSign(secret, tx_json, [callback])](https://www.stellar.org/api/#api-sign)**
+**[requestSign(secret, tx_json, [callback])](https://www.payshares.org/api/#api-sign)**
 
 Sign a transaction.
 
 + requires trusted remote
 
-**[requestSubmit([callback])](https://www.stellar.org/api/#api-submit)**
+**[requestSubmit([callback])](https://www.payshares.org/api/#api-submit)**
 
 Submit a transaction to the network. This command is used internally to submit transactions with a greater degree of reliability. See [Submitting a payment to the network](GUIDES.md#3-submitting-a-payment-to-the-network) for details.
 
 
-**[requestRipplePathFind(src_account, dst_account, dst_amount, src_currencies, [callback])](https://www.stellar.org/api/#api-find_path)**
+**[requestRipplePathFind(src_account, dst_account, dst_amount, src_currencies, [callback])](https://www.payshares.org/api/#api-find_path)**
 
 
 **transaction([destination], [source], [amount], [callback])**
 
-Returns a [Transaction](https://github.com/stellar/stellar-lib/blob/develop/src/js/ripple/transaction.js) object
+Returns a [Transaction](https://github.com/payshares/payshares-lib/blob/develop/src/js/ripple/transaction.js) object
 
 
 #3. Transaction events
 
-[Transaction](https://github.com/stellar/stellar-lib/blob/develop/src/js/ripple/transaction.js) objects are EventEmitters. They may emit the following events.
+[Transaction](https://github.com/payshares/payshares-lib/blob/develop/src/js/ripple/transaction.js) objects are EventEmitters. They may emit the following events.
 
 + `final` Transaction has erred or succeeded. This event indicates that the transaction has finished processing.
 + `error` Transaction has erred. This event is a final state.
