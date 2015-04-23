@@ -1574,7 +1574,7 @@ var payshares =
 	    currency: Currency.json_rewrite(gets.currency)
 	  };
 
-	  if (request.message.taker_gets.currency !== 'STR') {
+	  if (request.message.taker_gets.currency !== 'XPR') {
 	    request.message.taker_gets.issuer = UInt160.json_rewrite(gets.issuer);
 	  }
 
@@ -1582,7 +1582,7 @@ var payshares =
 	    currency: Currency.json_rewrite(pays.currency)
 	  };
 
-	  if (request.message.taker_pays.currency !== 'STR') {
+	  if (request.message.taker_pays.currency !== 'XPR') {
 	    request.message.taker_pays.issuer = UInt160.json_rewrite(pays.issuer);
 	  }
 
@@ -1892,7 +1892,7 @@ var payshares =
 	};
 
 	Remote.prepareTrade = function(currency, issuer) {
-	  return currency + (currency === 'STR' ? '' : ('/' + issuer));
+	  return currency + (currency === 'XPR' ? '' : ('/' + issuer));
 	};
 
 	/**
@@ -2759,7 +2759,7 @@ var payshares =
 	      currency: Currency.json_rewrite(book[side].currency)
 	    };
 
-	    if (obj.currency !== 'STR') {
+	    if (obj.currency !== 'XPR') {
 	      obj.issuer = UInt160.json_rewrite(book[side].issuer);
 	    }
 	  }
@@ -3403,7 +3403,7 @@ var payshares =
 	  var m = String(j).match(Amount.human_RE);
 
 	  if (m) {
-	    var currency   = m[1] || m[5] || 'STR';
+	    var currency   = m[1] || m[5] || 'XPR';
 	    var integer    = m[3] || '0';
 	    var fraction   = m[4] || '';
 	    var precision  = null;
@@ -3413,8 +3413,8 @@ var payshares =
 	    this._value = new BigInteger(integer);
 	    this.set_currency(currency);
 
-	    // STR have exactly six digits of precision
-	    if (currency === 'STR') {
+	    // XPR have exactly six digits of precision
+	    if (currency === 'XPR') {
 	      fraction = fraction.slice(0, 6);
 	      while (fraction.length < 6) {
 	        fraction += '0';
@@ -3594,7 +3594,7 @@ var payshares =
 	        j.copyTo(this);
 	      } else if (j.hasOwnProperty('value')) {
 	        // Parse the passed value to sanitize and copy it.
-	        this._currency.parse_json(j.currency, true); // Never STR.
+	        this._currency.parse_json(j.currency, true); // Never XPR.
 
 	        if (typeof j.issuer === 'string') {
 	          this._issuer.parse_json(j.issuer);
@@ -3611,7 +3611,7 @@ var payshares =
 	  return this;
 	};
 
-	// Parse a STR value from untrusted input.
+	// Parse a XPR value from untrusted input.
 	// - integer = raw units
 	// - float = with precision 6
 	// XXX Improvements: disallow leading zeros.
@@ -3952,7 +3952,7 @@ var payshares =
 	Amount.prototype.to_text_full = function(opts) {
 	  return this._value instanceof BigInteger
 	    ? this._is_native
-	      ? this.to_human() + '/STR'
+	      ? this.to_human() + '/XPR'
 	      : this.to_text() + '/' + this._currency.to_json() + '/' + this._issuer.to_json(opts)
 	    : NaN;
 	};
@@ -3977,7 +3977,7 @@ var payshares =
 	    } else if (this._is_native !== d._is_native) {
 	      result = 'Native mismatch.';
 	    } else {
-	      var type = this._is_native ? 'STR' : 'Non-STR';
+	      var type = this._is_native ? 'XPR' : 'Non-XPR';
 
 	      if (!this._value.equals(d._value) || this._offset !== d._offset) {
 	        result = type + ' value differs.';
@@ -3985,9 +3985,9 @@ var payshares =
 	        result = type + ' sign differs.';
 	      } else if (!this._is_native) {
 	        if (!this._currency.equals(d._currency)) {
-	          result = 'Non-STR currency differs.';
+	          result = 'Non-XPR currency differs.';
 	        } else if (!ignore_issuer && !this._issuer.equals(d._issuer)) {
-	          result = 'Non-STR issuer differs: ' + d._issuer.to_json() + '/' + this._issuer.to_json();
+	          result = 'Non-XPR issuer differs: ' + d._issuer.to_json() + '/' + this._issuer.to_json();
 	        }
 	      }
 	    }
@@ -4554,7 +4554,8 @@ var payshares =
 	  TrustSet: {
 	    SetAuth:            0x00010000,
 	    NoRipple:           0x00020000,
-	    ClearNoRipple:      0x00040000
+	    ClearNoRipple:      0x00040000,
+	    ClearAuth:          0x00080000
 	  },
 
 	  OfferCreate: {
@@ -5391,11 +5392,11 @@ var payshares =
 	//
 
 	var Currency = extend(function() {
-	  // Internal form: 0 = XRP. 3 letter-code.
+	  // Internal form: 0 = XPR. 3 letter-code.
 	  // XXX Internal should be 0 or hex with three letter annotation when valid.
 
 	  // Json form:
-	  //  '', 'XRP', '0': 0
+	  //  '', 'XPR', '0': 0
 	  //  3-letter code: ...
 	  // XXX Should support hex, C++ doesn't currently allow it.
 
@@ -5453,7 +5454,7 @@ var payshares =
 
 	  switch (typeof j) {
 	    case 'string':
-	      if (!j || /^(0|STR)$/.test(j)) {
+	      if (!j || /^(0|XPR)$/.test(j)) {
 	        if (shouldInterpretXrpAsIou) {
 	          this.parse_hex(Currency.HEX_CURRENCY_BAD);
 	        } else {
@@ -5561,7 +5562,7 @@ var payshares =
 	  var isZeroExceptInStandardPositions = true;
 
 	  if (!bytes) {
-	    return "STR";
+	    return "XPR";
 	  }
 
 	  this._native = false;
@@ -5581,7 +5582,7 @@ var payshares =
 
 	    if (this._iso_code === '\0\0\0') {
 	      this._native = true;
-	      this._iso_code = "STR";
+	      this._iso_code = "XPR";
 	    }
 
 	    this._type = 0;
@@ -5692,7 +5693,7 @@ var payshares =
 	Currency.prototype.to_json = function(opts) {
 	  if (!this.is_valid()) {
 	    // XXX This is backwards compatible behavior, but probably not very good.
-	    return "STR";
+	    return "XPR";
 	  }
 
 	  var currency;
@@ -5939,8 +5940,8 @@ var payshares =
 	UInt160.prototype = extend({}, UInt.prototype);
 	UInt160.prototype.constructor = UInt160;
 
-	var ACCOUNT_ZERO = UInt160.ACCOUNT_ZERO = 'ggggggggggggggggggggghoLvTp';
-	var ACCOUNT_ONE  = UInt160.ACCOUNT_ONE  = 'ggggggggggggggggggggBZbvji';
+	var ACCOUNT_ZERO = UInt160.ACCOUNT_ZERO = 'xxxxxxxxxxxxxxxxxxxxxhoLvTp';
+	var ACCOUNT_ONE  = UInt160.ACCOUNT_ONE  = 'xxxxxxxxxxxxxxxxxxxxBZbvji';
 	var HEX_ZERO     = UInt160.HEX_ZERO     = '0000000000000000000000000000000000000000';
 	var HEX_ONE      = UInt160.HEX_ONE      = '0000000000000000000000000000000000000001';
 	var XPR_ZERO     = UInt160.XPR_ZERO     = utils.hexToString(HEX_ZERO);
@@ -6320,10 +6321,10 @@ var payshares =
 	    var pays = Amount.from_json(an.fields.TakerPays);
 
 	    var getsKey = gets.currency().to_json();
-	    if (getsKey !== 'STR') getsKey += '/' + gets.issuer().to_json();
+	    if (getsKey !== 'XPR') getsKey += '/' + gets.issuer().to_json();
 
 	    var paysKey = pays.currency().to_json();
-	    if (paysKey !== 'STR') paysKey += '/' + pays.issuer().to_json();
+	    if (paysKey !== 'XPR') paysKey += '/' + pays.issuer().to_json();
 
 	    var key = [ getsKey, paysKey ].join(':');
 
@@ -9250,11 +9251,11 @@ var payshares =
 	    }
 	  };
 
-	  if (this._currency_gets !== 'STR') {
+	  if (this._currency_gets !== 'XPR') {
 	    json.taker_gets.issuer = this._issuer_gets;
 	  }
 
-	  if (this._currency_pays !== 'STR') {
+	  if (this._currency_pays !== 'XPR') {
 	    json.taker_pays.issuer = this._issuer_pays;
 	  }
 
@@ -9271,16 +9272,16 @@ var payshares =
 	  // XXX Should check for same currency (non-native) && same issuer
 	  return (
 	    Currency.is_valid(this._currency_pays) &&
-	    (this._currency_pays === 'STR' || UInt160.is_valid(this._issuer_pays)) &&
+	    (this._currency_pays === 'XPR' || UInt160.is_valid(this._issuer_pays)) &&
 	    Currency.is_valid(this._currency_gets) &&
-	    (this._currency_gets === 'STR' || UInt160.is_valid(this._issuer_gets)) &&
-	    !(this._currency_pays === 'STR' && this._currency_gets === 'STR')
+	    (this._currency_gets === 'XPR' || UInt160.is_valid(this._issuer_gets)) &&
+	    !(this._currency_pays === 'XPR' && this._currency_gets === 'XPR')
 	  );
 	};
 
 	OrderBook.prototype.trade = function(type) {
 	  var tradeXpr = '0'
-	  + ((this['_currency_' + type] === 'STR') ? '' : '/'
+	  + ((this['_currency_' + type] === 'XPR') ? '' : '/'
 	     + this['_currency_' + type ] + '/'
 	     + this['_issuer_' + type]);
 	  return Amount.from_json(tradeXpr);
@@ -15625,7 +15626,7 @@ var payshares =
 	 */
 
 	var base64 = __webpack_require__(66)
-	var ieee754 = __webpack_require__(62)
+	var ieee754 = __webpack_require__(61)
 
 	exports.Buffer = Buffer
 	exports.SlowBuffer = Buffer
@@ -16819,7 +16820,7 @@ var payshares =
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-	var punycode = __webpack_require__(64);
+	var punycode = __webpack_require__(65);
 
 	exports.parse = urlParse;
 	exports.resolve = urlResolve;
@@ -16887,7 +16888,7 @@ var payshares =
 	      'gopher:': true,
 	      'file:': true
 	    },
-	    querystring = __webpack_require__(65);
+	    querystring = __webpack_require__(64);
 
 	function urlParse(url, parseQueryString, slashesDenoteHost) {
 	  if (url && typeof(url) === 'object' && url.href) return url;
@@ -18167,6 +18168,7 @@ var payshares =
 	function use (self, hit) {
 	  shiftLU(self, hit)
 	  hit.lu = self._mru ++
+	  if (self._maxAge) hit.now = Date.now()
 	  self._lruList[hit.lu] = hit
 	}
 
@@ -20443,7 +20445,7 @@ var payshares =
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {var createHash = __webpack_require__(69)
 
-	var md5 = toConstructor(__webpack_require__(61))
+	var md5 = toConstructor(__webpack_require__(62))
 	var rmd160 = toConstructor(__webpack_require__(57))
 
 	function toConstructor (fn) {
@@ -22282,6 +22284,96 @@ var payshares =
 /* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
+	exports.read = function(buffer, offset, isLE, mLen, nBytes) {
+	  var e, m,
+	      eLen = nBytes * 8 - mLen - 1,
+	      eMax = (1 << eLen) - 1,
+	      eBias = eMax >> 1,
+	      nBits = -7,
+	      i = isLE ? (nBytes - 1) : 0,
+	      d = isLE ? -1 : 1,
+	      s = buffer[offset + i];
+
+	  i += d;
+
+	  e = s & ((1 << (-nBits)) - 1);
+	  s >>= (-nBits);
+	  nBits += eLen;
+	  for (; nBits > 0; e = e * 256 + buffer[offset + i], i += d, nBits -= 8);
+
+	  m = e & ((1 << (-nBits)) - 1);
+	  e >>= (-nBits);
+	  nBits += mLen;
+	  for (; nBits > 0; m = m * 256 + buffer[offset + i], i += d, nBits -= 8);
+
+	  if (e === 0) {
+	    e = 1 - eBias;
+	  } else if (e === eMax) {
+	    return m ? NaN : ((s ? -1 : 1) * Infinity);
+	  } else {
+	    m = m + Math.pow(2, mLen);
+	    e = e - eBias;
+	  }
+	  return (s ? -1 : 1) * m * Math.pow(2, e - mLen);
+	};
+
+	exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
+	  var e, m, c,
+	      eLen = nBytes * 8 - mLen - 1,
+	      eMax = (1 << eLen) - 1,
+	      eBias = eMax >> 1,
+	      rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0),
+	      i = isLE ? 0 : (nBytes - 1),
+	      d = isLE ? 1 : -1,
+	      s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0;
+
+	  value = Math.abs(value);
+
+	  if (isNaN(value) || value === Infinity) {
+	    m = isNaN(value) ? 1 : 0;
+	    e = eMax;
+	  } else {
+	    e = Math.floor(Math.log(value) / Math.LN2);
+	    if (value * (c = Math.pow(2, -e)) < 1) {
+	      e--;
+	      c *= 2;
+	    }
+	    if (e + eBias >= 1) {
+	      value += rt / c;
+	    } else {
+	      value += rt * Math.pow(2, 1 - eBias);
+	    }
+	    if (value * c >= 2) {
+	      e++;
+	      c /= 2;
+	    }
+
+	    if (e + eBias >= eMax) {
+	      m = 0;
+	      e = eMax;
+	    } else if (e + eBias >= 1) {
+	      m = (value * c - 1) * Math.pow(2, mLen);
+	      e = e + eBias;
+	    } else {
+	      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen);
+	      e = 0;
+	    }
+	  }
+
+	  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8);
+
+	  e = (e << mLen) | m;
+	  eLen += mLen;
+	  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8);
+
+	  buffer[offset + i - d] |= s * 128;
+	};
+
+
+/***/ },
+/* 62 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/*
 	 * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
 	 * Digest Algorithm, as defined in RFC 1321.
@@ -22440,96 +22532,6 @@ var payshares =
 
 
 /***/ },
-/* 62 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports.read = function(buffer, offset, isLE, mLen, nBytes) {
-	  var e, m,
-	      eLen = nBytes * 8 - mLen - 1,
-	      eMax = (1 << eLen) - 1,
-	      eBias = eMax >> 1,
-	      nBits = -7,
-	      i = isLE ? (nBytes - 1) : 0,
-	      d = isLE ? -1 : 1,
-	      s = buffer[offset + i];
-
-	  i += d;
-
-	  e = s & ((1 << (-nBits)) - 1);
-	  s >>= (-nBits);
-	  nBits += eLen;
-	  for (; nBits > 0; e = e * 256 + buffer[offset + i], i += d, nBits -= 8);
-
-	  m = e & ((1 << (-nBits)) - 1);
-	  e >>= (-nBits);
-	  nBits += mLen;
-	  for (; nBits > 0; m = m * 256 + buffer[offset + i], i += d, nBits -= 8);
-
-	  if (e === 0) {
-	    e = 1 - eBias;
-	  } else if (e === eMax) {
-	    return m ? NaN : ((s ? -1 : 1) * Infinity);
-	  } else {
-	    m = m + Math.pow(2, mLen);
-	    e = e - eBias;
-	  }
-	  return (s ? -1 : 1) * m * Math.pow(2, e - mLen);
-	};
-
-	exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
-	  var e, m, c,
-	      eLen = nBytes * 8 - mLen - 1,
-	      eMax = (1 << eLen) - 1,
-	      eBias = eMax >> 1,
-	      rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0),
-	      i = isLE ? 0 : (nBytes - 1),
-	      d = isLE ? 1 : -1,
-	      s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0;
-
-	  value = Math.abs(value);
-
-	  if (isNaN(value) || value === Infinity) {
-	    m = isNaN(value) ? 1 : 0;
-	    e = eMax;
-	  } else {
-	    e = Math.floor(Math.log(value) / Math.LN2);
-	    if (value * (c = Math.pow(2, -e)) < 1) {
-	      e--;
-	      c *= 2;
-	    }
-	    if (e + eBias >= 1) {
-	      value += rt / c;
-	    } else {
-	      value += rt * Math.pow(2, 1 - eBias);
-	    }
-	    if (value * c >= 2) {
-	      e++;
-	      c /= 2;
-	    }
-
-	    if (e + eBias >= eMax) {
-	      m = 0;
-	      e = eMax;
-	    } else if (e + eBias >= 1) {
-	      m = (value * c - 1) * Math.pow(2, mLen);
-	      e = e + eBias;
-	    } else {
-	      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen);
-	      e = 0;
-	    }
-	  }
-
-	  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8);
-
-	  e = (e << mLen) | m;
-	  eLen += mLen;
-	  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8);
-
-	  buffer[offset + i - d] |= s * 128;
-	};
-
-
-/***/ },
 /* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -22560,6 +22562,120 @@ var payshares =
 
 /***/ },
 /* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;// Copyright Joyent, Inc. and other Node contributors.
+	//
+	// Permission is hereby granted, free of charge, to any person obtaining a
+	// copy of this software and associated documentation files (the
+	// "Software"), to deal in the Software without restriction, including
+	// without limitation the rights to use, copy, modify, merge, publish,
+	// distribute, sublicense, and/or sell copies of the Software, and to permit
+	// persons to whom the Software is furnished to do so, subject to the
+	// following conditions:
+	//
+	// The above copyright notice and this permission notice shall be included
+	// in all copies or substantial portions of the Software.
+	//
+	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+	// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+	// Query String Utilities
+
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(require, exports, module, undefined) {
+	"use strict";
+
+	var QueryString = exports;
+
+	function charCode(c) {
+	  return c.charCodeAt(0);
+	}
+
+	QueryString.unescape = decodeURIComponent;
+	QueryString.escape = encodeURIComponent;
+
+	var stringifyPrimitive = function(v) {
+	  switch (typeof v) {
+	    case 'string':
+	      return v;
+
+	    case 'boolean':
+	      return v ? 'true' : 'false';
+
+	    case 'number':
+	      return isFinite(v) ? v : '';
+
+	    default:
+	      return '';
+	  }
+	};
+
+
+	QueryString.stringify = QueryString.encode = function(obj, sep, eq, name) {
+	  sep = sep || '&';
+	  eq = eq || '=';
+	  obj = (obj === null) ? undefined : obj;
+
+	  switch (typeof obj) {
+	    case 'object':
+	      return Object.keys(obj).map(function(k) {
+	        if (Array.isArray(obj[k])) {
+	          return obj[k].map(function(v) {
+	            return QueryString.escape(stringifyPrimitive(k)) +
+	                   eq +
+	                   QueryString.escape(stringifyPrimitive(v));
+	          }).join(sep);
+	        } else {
+	          return QueryString.escape(stringifyPrimitive(k)) +
+	                 eq +
+	                 QueryString.escape(stringifyPrimitive(obj[k]));
+	        }
+	      }).join(sep);
+
+	    default:
+	      if (!name) return '';
+	      return QueryString.escape(stringifyPrimitive(name)) + eq +
+	             QueryString.escape(stringifyPrimitive(obj));
+	  }
+	};
+
+	// Parse a key=val string.
+	QueryString.parse = QueryString.decode = function(qs, sep, eq) {
+	  sep = sep || '&';
+	  eq = eq || '=';
+	  var obj = {};
+
+	  if (typeof qs !== 'string' || qs.length === 0) {
+	    return obj;
+	  }
+
+	  qs.split(sep).forEach(function(kvp) {
+	    var x = kvp.split(eq);
+	    var k = QueryString.unescape(x[0], true);
+	    var v = QueryString.unescape(x.slice(1).join(eq), true);
+
+	    if (!(k in obj)) {
+	      obj[k] = v;
+	    } else if (!Array.isArray(obj[k])) {
+	      obj[k] = [obj[k], v];
+	    } else {
+	      obj[k].push(v);
+	    }
+	  });
+
+	  return obj;
+	};
+
+	}.call(exports, __webpack_require__, exports, module)), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ },
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(module) {/*! http://mths.be/punycode by @mathias */
@@ -23076,120 +23192,6 @@ var payshares =
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(75)(module)))
 
 /***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_RESULT__;// Copyright Joyent, Inc. and other Node contributors.
-	//
-	// Permission is hereby granted, free of charge, to any person obtaining a
-	// copy of this software and associated documentation files (the
-	// "Software"), to deal in the Software without restriction, including
-	// without limitation the rights to use, copy, modify, merge, publish,
-	// distribute, sublicense, and/or sell copies of the Software, and to permit
-	// persons to whom the Software is furnished to do so, subject to the
-	// following conditions:
-	//
-	// The above copyright notice and this permission notice shall be included
-	// in all copies or substantial portions of the Software.
-	//
-	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-	// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-	// Query String Utilities
-
-	!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(require, exports, module, undefined) {
-	"use strict";
-
-	var QueryString = exports;
-
-	function charCode(c) {
-	  return c.charCodeAt(0);
-	}
-
-	QueryString.unescape = decodeURIComponent;
-	QueryString.escape = encodeURIComponent;
-
-	var stringifyPrimitive = function(v) {
-	  switch (typeof v) {
-	    case 'string':
-	      return v;
-
-	    case 'boolean':
-	      return v ? 'true' : 'false';
-
-	    case 'number':
-	      return isFinite(v) ? v : '';
-
-	    default:
-	      return '';
-	  }
-	};
-
-
-	QueryString.stringify = QueryString.encode = function(obj, sep, eq, name) {
-	  sep = sep || '&';
-	  eq = eq || '=';
-	  obj = (obj === null) ? undefined : obj;
-
-	  switch (typeof obj) {
-	    case 'object':
-	      return Object.keys(obj).map(function(k) {
-	        if (Array.isArray(obj[k])) {
-	          return obj[k].map(function(v) {
-	            return QueryString.escape(stringifyPrimitive(k)) +
-	                   eq +
-	                   QueryString.escape(stringifyPrimitive(v));
-	          }).join(sep);
-	        } else {
-	          return QueryString.escape(stringifyPrimitive(k)) +
-	                 eq +
-	                 QueryString.escape(stringifyPrimitive(obj[k]));
-	        }
-	      }).join(sep);
-
-	    default:
-	      if (!name) return '';
-	      return QueryString.escape(stringifyPrimitive(name)) + eq +
-	             QueryString.escape(stringifyPrimitive(obj));
-	  }
-	};
-
-	// Parse a key=val string.
-	QueryString.parse = QueryString.decode = function(qs, sep, eq) {
-	  sep = sep || '&';
-	  eq = eq || '=';
-	  var obj = {};
-
-	  if (typeof qs !== 'string' || qs.length === 0) {
-	    return obj;
-	  }
-
-	  qs.split(sep).forEach(function(kvp) {
-	    var x = kvp.split(eq);
-	    var k = QueryString.unescape(x[0], true);
-	    var v = QueryString.unescape(x.slice(1).join(eq), true);
-
-	    if (!(k in obj)) {
-	      obj[k] = v;
-	    } else if (!Array.isArray(obj[k])) {
-	      obj[k] = [obj[k], v];
-	    } else {
-	      obj[k].push(v);
-	    }
-	  });
-
-	  return obj;
-	};
-
-	}.call(exports, __webpack_require__, exports, module)), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ },
 /* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -23207,12 +23209,16 @@ var payshares =
 		var NUMBER = '0'.charCodeAt(0)
 		var LOWER  = 'a'.charCodeAt(0)
 		var UPPER  = 'A'.charCodeAt(0)
+		var PLUS_URL_SAFE = '-'.charCodeAt(0)
+		var SLASH_URL_SAFE = '_'.charCodeAt(0)
 
 		function decode (elt) {
 			var code = elt.charCodeAt(0)
-			if (code === PLUS)
+			if (code === PLUS ||
+			    code === PLUS_URL_SAFE)
 				return 62 // '+'
-			if (code === SLASH)
+			if (code === SLASH ||
+			    code === SLASH_URL_SAFE)
 				return 63 // '/'
 			if (code < NUMBER)
 				return -1 //no match
@@ -25347,12 +25353,16 @@ var payshares =
 		var NUMBER = '0'.charCodeAt(0)
 		var LOWER  = 'a'.charCodeAt(0)
 		var UPPER  = 'A'.charCodeAt(0)
+		var PLUS_URL_SAFE = '-'.charCodeAt(0)
+		var SLASH_URL_SAFE = '_'.charCodeAt(0)
 
 		function decode (elt) {
 			var code = elt.charCodeAt(0)
-			if (code === PLUS)
+			if (code === PLUS ||
+			    code === PLUS_URL_SAFE)
 				return 62 // '+'
-			if (code === SLASH)
+			if (code === SLASH ||
+			    code === SLASH_URL_SAFE)
 				return 63 // '/'
 			if (code < NUMBER)
 				return -1 //no match
