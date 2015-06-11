@@ -92,7 +92,7 @@ var Amount = require('payshares-lib').Amount;
 var MY_ADDRESS = 'rrrMyAddress';
 var MY_SECRET  = 'secret';
 var RECIPIENT  = 'rrrRecipient';
-var AMOUNT     = Amount.from_human('1XPR');
+var AMOUNT     = Amount.from_human('1XPS');
 
 var remote = new Remote({ /* Remote options */ });
 
@@ -126,7 +126,7 @@ The [`max_fee`](REFERENCE.md#1-remote-options) option can be used to avoid submi
 
 ##4. Submitting a trade offer to the network
 
-Submitting a trade offer to the network is similar to submitting a payment transaction. Here is an example for a trade that expires in 24 hours where you are offering to sell 1 USD in exchange for 100 XPR:
+Submitting a trade offer to the network is similar to submitting a payment transaction. Here is an example for a trade that expires in 24 hours where you are offering to sell 1 USD in exchange for 100 XPS:
 
 ```js
 /* Loading payshares-lib Remote and Amount modules in Node.js */ 
@@ -140,7 +140,7 @@ var Amount = require('payshares-lib').Amount;
 var MY_ADDRESS = 'rrrMyAddress';
 var MY_SECRET  = 'secret';
 
-var BUY_AMOUNT = Amount.from_human('100XPR');
+var BUY_AMOUNT = Amount.from_human('100XPS');
 var SELL_AMOUNT = Amount.from_human('1USD');
 
 // EXPIRATION must be a Date object, leave undefined to submit offer that won't expire

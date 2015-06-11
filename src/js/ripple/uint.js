@@ -139,14 +139,14 @@ UInt.prototype.parse_generic = function(j) {
   switch (j) {
     case undefined:
       case '0':
-      case this.constructor.XPR_ZERO:
+      case this.constructor.XPS_ZERO:
       case this.constructor.ACCOUNT_ZERO:
       case this.constructor.HEX_ZERO:
       this._value  = BigInteger.valueOf();
       break;
 
     case '1':
-      case this.constructor.XPR_ONE:
+      case this.constructor.XPS_ONE:
       case this.constructor.ACCOUNT_ONE:
       case this.constructor.HEX_ONE:
       this._value  = new BigInteger([1]);

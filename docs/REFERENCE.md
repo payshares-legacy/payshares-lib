@@ -179,7 +179,7 @@ Return the offers for an order book as one or more pages.
 ```js
 var request = remote.request_book_offers({
   gets: {
-    'currency':'XPR'
+    'currency':'XPS'
   },
   pays: {
     'currency':'USD',

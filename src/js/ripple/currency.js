@@ -8,11 +8,11 @@ var Float = require('./ieee754').Float;
 //
 
 var Currency = extend(function() {
-  // Internal form: 0 = XPR. 3 letter-code.
+  // Internal form: 0 = XPS. 3 letter-code.
   // XXX Internal should be 0 or hex with three letter annotation when valid.
 
   // Json form:
-  //  '', 'XPR', '0': 0
+  //  '', 'XPS', '0': 0
   //  3-letter code: ...
   // XXX Should support hex, C++ doesn't currently allow it.
 
@@ -70,7 +70,7 @@ Currency.prototype.parse_json = function(j, shouldInterpretXrpAsIou) {
 
   switch (typeof j) {
     case 'string':
-      if (!j || /^(0|XPR)$/.test(j)) {
+      if (!j || /^(0|XPS)$/.test(j)) {
         if (shouldInterpretXrpAsIou) {
           this.parse_hex(Currency.HEX_CURRENCY_BAD);
         } else {
@@ -178,7 +178,7 @@ Currency.prototype._update = function() {
   var isZeroExceptInStandardPositions = true;
 
   if (!bytes) {
-    return "XPR";
+    return "XPS";
   }
 
   this._native = false;
@@ -198,7 +198,7 @@ Currency.prototype._update = function() {
 
     if (this._iso_code === '\0\0\0') {
       this._native = true;
-      this._iso_code = "XPR";
+      this._iso_code = "XPS";
     }
 
     this._type = 0;
@@ -309,7 +309,7 @@ Currency.prototype.get_interest_percentage_at = function(referenceDate, decimals
 Currency.prototype.to_json = function(opts) {
   if (!this.is_valid()) {
     // XXX This is backwards compatible behavior, but probably not very good.
-    return "XPR";
+    return "XPS";
   }
 
   var currency;

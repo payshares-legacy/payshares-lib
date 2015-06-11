@@ -1574,7 +1574,7 @@ var payshares =
 	    currency: Currency.json_rewrite(gets.currency)
 	  };
 
-	  if (request.message.taker_gets.currency !== 'XPR') {
+	  if (request.message.taker_gets.currency !== 'XPS') {
 	    request.message.taker_gets.issuer = UInt160.json_rewrite(gets.issuer);
 	  }
 
@@ -1582,7 +1582,7 @@ var payshares =
 	    currency: Currency.json_rewrite(pays.currency)
 	  };
 
-	  if (request.message.taker_pays.currency !== 'XPR') {
+	  if (request.message.taker_pays.currency !== 'XPS') {
 	    request.message.taker_pays.issuer = UInt160.json_rewrite(pays.issuer);
 	  }
 
@@ -1892,7 +1892,7 @@ var payshares =
 	};
 
 	Remote.prepareTrade = function(currency, issuer) {
-	  return currency + (currency === 'XPR' ? '' : ('/' + issuer));
+	  return currency + (currency === 'XPS' ? '' : ('/' + issuer));
 	};
 
 	/**
@@ -2759,7 +2759,7 @@ var payshares =
 	      currency: Currency.json_rewrite(book[side].currency)
 	    };
 
-	    if (obj.currency !== 'XPR') {
+	    if (obj.currency !== 'XPS') {
 	      obj.issuer = UInt160.json_rewrite(book[side].issuer);
 	    }
 	  }
@@ -3403,7 +3403,7 @@ var payshares =
 	  var m = String(j).match(Amount.human_RE);
 
 	  if (m) {
-	    var currency   = m[1] || m[5] || 'XPR';
+	    var currency   = m[1] || m[5] || 'XPS';
 	    var integer    = m[3] || '0';
 	    var fraction   = m[4] || '';
 	    var precision  = null;
@@ -3413,8 +3413,8 @@ var payshares =
 	    this._value = new BigInteger(integer);
 	    this.set_currency(currency);
 
-	    // XPR have exactly six digits of precision
-	    if (currency === 'XPR') {
+	    // XPS have exactly six digits of precision
+	    if (currency === 'XPS') {
 	      fraction = fraction.slice(0, 6);
 	      while (fraction.length < 6) {
 	        fraction += '0';
@@ -3594,7 +3594,7 @@ var payshares =
 	        j.copyTo(this);
 	      } else if (j.hasOwnProperty('value')) {
 	        // Parse the passed value to sanitize and copy it.
-	        this._currency.parse_json(j.currency, true); // Never XPR.
+	        this._currency.parse_json(j.currency, true); // Never XPS.
 
 	        if (typeof j.issuer === 'string') {
 	          this._issuer.parse_json(j.issuer);
@@ -3611,7 +3611,7 @@ var payshares =
 	  return this;
 	};
 
-	// Parse a XPR value from untrusted input.
+	// Parse a XPS value from untrusted input.
 	// - integer = raw units
 	// - float = with precision 6
 	// XXX Improvements: disallow leading zeros.
@@ -3952,7 +3952,7 @@ var payshares =
 	Amount.prototype.to_text_full = function(opts) {
 	  return this._value instanceof BigInteger
 	    ? this._is_native
-	      ? this.to_human() + '/XPR'
+	      ? this.to_human() + '/XPS'
 	      : this.to_text() + '/' + this._currency.to_json() + '/' + this._issuer.to_json(opts)
 	    : NaN;
 	};
@@ -3977,7 +3977,7 @@ var payshares =
 	    } else if (this._is_native !== d._is_native) {
 	      result = 'Native mismatch.';
 	    } else {
-	      var type = this._is_native ? 'XPR' : 'Non-XPR';
+	      var type = this._is_native ? 'XPS' : 'Non-XPS';
 
 	      if (!this._value.equals(d._value) || this._offset !== d._offset) {
 	        result = type + ' value differs.';
@@ -3985,9 +3985,9 @@ var payshares =
 	        result = type + ' sign differs.';
 	      } else if (!this._is_native) {
 	        if (!this._currency.equals(d._currency)) {
-	          result = 'Non-XPR currency differs.';
+	          result = 'Non-XPS currency differs.';
 	        } else if (!ignore_issuer && !this._issuer.equals(d._issuer)) {
-	          result = 'Non-XPR issuer differs: ' + d._issuer.to_json() + '/' + this._issuer.to_json();
+	          result = 'Non-XPS issuer differs: ' + d._issuer.to_json() + '/' + this._issuer.to_json();
 	        }
 	      }
 	    }
@@ -5392,11 +5392,11 @@ var payshares =
 	//
 
 	var Currency = extend(function() {
-	  // Internal form: 0 = XPR. 3 letter-code.
+	  // Internal form: 0 = XPS. 3 letter-code.
 	  // XXX Internal should be 0 or hex with three letter annotation when valid.
 
 	  // Json form:
-	  //  '', 'XPR', '0': 0
+	  //  '', 'XPS', '0': 0
 	  //  3-letter code: ...
 	  // XXX Should support hex, C++ doesn't currently allow it.
 
@@ -5454,7 +5454,7 @@ var payshares =
 
 	  switch (typeof j) {
 	    case 'string':
-	      if (!j || /^(0|XPR)$/.test(j)) {
+	      if (!j || /^(0|XPS)$/.test(j)) {
 	        if (shouldInterpretXrpAsIou) {
 	          this.parse_hex(Currency.HEX_CURRENCY_BAD);
 	        } else {
@@ -5562,7 +5562,7 @@ var payshares =
 	  var isZeroExceptInStandardPositions = true;
 
 	  if (!bytes) {
-	    return "XPR";
+	    return "XPS";
 	  }
 
 	  this._native = false;
@@ -5582,7 +5582,7 @@ var payshares =
 
 	    if (this._iso_code === '\0\0\0') {
 	      this._native = true;
-	      this._iso_code = "XPR";
+	      this._iso_code = "XPS";
 	    }
 
 	    this._type = 0;
@@ -5693,7 +5693,7 @@ var payshares =
 	Currency.prototype.to_json = function(opts) {
 	  if (!this.is_valid()) {
 	    // XXX This is backwards compatible behavior, but probably not very good.
-	    return "XPR";
+	    return "XPS";
 	  }
 
 	  var currency;
@@ -5944,8 +5944,8 @@ var payshares =
 	var ACCOUNT_ONE  = UInt160.ACCOUNT_ONE  = 'xxxxxxxxxxxxxxxxxxxxBZbvji';
 	var HEX_ZERO     = UInt160.HEX_ZERO     = '0000000000000000000000000000000000000000';
 	var HEX_ONE      = UInt160.HEX_ONE      = '0000000000000000000000000000000000000001';
-	var XPR_ZERO     = UInt160.XPR_ZERO     = utils.hexToString(HEX_ZERO);
-	var XPR_ONE      = UInt160.XPR_ONE      = utils.hexToString(HEX_ONE);
+	var XPS_ZERO     = UInt160.XPS_ZERO     = utils.hexToString(HEX_ZERO);
+	var XPS_ONE      = UInt160.XPS_ONE      = utils.hexToString(HEX_ONE);
 
 	UInt160.prototype.set_version = function(j) {
 	  this._version_byte = j;
@@ -6042,8 +6042,8 @@ var payshares =
 
 	var HEX_ZERO = UInt256.HEX_ZERO = '00000000000000000000000000000000' + '00000000000000000000000000000000';
 	var HEX_ONE  = UInt256.HEX_ONE  = '00000000000000000000000000000000' + '00000000000000000000000000000001';
-	var XPR_ZERO = UInt256.XPR_ZERO = utils.hexToString(HEX_ZERO);
-	var XPR_ONE  = UInt256.XPR_ONE  = utils.hexToString(HEX_ONE);
+	var XPS_ZERO = UInt256.XPS_ZERO = utils.hexToString(HEX_ZERO);
+	var XPS_ONE  = UInt256.XPS_ONE  = utils.hexToString(HEX_ONE);
 
 	exports.UInt256 = UInt256;
 
@@ -6321,10 +6321,10 @@ var payshares =
 	    var pays = Amount.from_json(an.fields.TakerPays);
 
 	    var getsKey = gets.currency().to_json();
-	    if (getsKey !== 'XPR') getsKey += '/' + gets.issuer().to_json();
+	    if (getsKey !== 'XPS') getsKey += '/' + gets.issuer().to_json();
 
 	    var paysKey = pays.currency().to_json();
-	    if (paysKey !== 'XPR') paysKey += '/' + pays.issuer().to_json();
+	    if (paysKey !== 'XPS') paysKey += '/' + pays.issuer().to_json();
 
 	    var key = [ getsKey, paysKey ].join(':');
 
@@ -8120,7 +8120,7 @@ var payshares =
 	  tecINSUF_RESERVE_LINE: 122,
 	  tecINSUF_RESERVE_OFFER: 123,
 	  tecNO_DST: 124,
-	  tecNO_DST_INSUF_XPR: 125,
+	  tecNO_DST_INSUF_XPS: 125,
 	  tecNO_LINE_INSUF_RESERVE: 126,
 	  tecNO_LINE_REDUNDANT: 127,
 	  tecPATH_DRY: 128,
@@ -9251,11 +9251,11 @@ var payshares =
 	    }
 	  };
 
-	  if (this._currency_gets !== 'XPR') {
+	  if (this._currency_gets !== 'XPS') {
 	    json.taker_gets.issuer = this._issuer_gets;
 	  }
 
-	  if (this._currency_pays !== 'XPR') {
+	  if (this._currency_pays !== 'XPS') {
 	    json.taker_pays.issuer = this._issuer_pays;
 	  }
 
@@ -9272,16 +9272,16 @@ var payshares =
 	  // XXX Should check for same currency (non-native) && same issuer
 	  return (
 	    Currency.is_valid(this._currency_pays) &&
-	    (this._currency_pays === 'XPR' || UInt160.is_valid(this._issuer_pays)) &&
+	    (this._currency_pays === 'XPS' || UInt160.is_valid(this._issuer_pays)) &&
 	    Currency.is_valid(this._currency_gets) &&
-	    (this._currency_gets === 'XPR' || UInt160.is_valid(this._issuer_gets)) &&
-	    !(this._currency_pays === 'XPR' && this._currency_gets === 'XPR')
+	    (this._currency_gets === 'XPS' || UInt160.is_valid(this._issuer_gets)) &&
+	    !(this._currency_pays === 'XPS' && this._currency_gets === 'XPS')
 	  );
 	};
 
 	OrderBook.prototype.trade = function(type) {
 	  var tradeXpr = '0'
-	  + ((this['_currency_' + type] === 'XPR') ? '' : '/'
+	  + ((this['_currency_' + type] === 'XPS') ? '' : '/'
 	     + this['_currency_' + type ] + '/'
 	     + this['_issuer_' + type]);
 	  return Amount.from_json(tradeXpr);
@@ -10838,14 +10838,14 @@ var payshares =
 	  switch (j) {
 	    case undefined:
 	      case '0':
-	      case this.constructor.XPR_ZERO:
+	      case this.constructor.XPS_ZERO:
 	      case this.constructor.ACCOUNT_ZERO:
 	      case this.constructor.HEX_ZERO:
 	      this._value  = BigInteger.valueOf();
 	      break;
 
 	    case '1':
-	      case this.constructor.XPR_ONE:
+	      case this.constructor.XPS_ONE:
 	      case this.constructor.ACCOUNT_ONE:
 	      case this.constructor.HEX_ONE:
 	      this._value  = new BigInteger([1]);
@@ -17644,8 +17644,8 @@ var payshares =
 
 	var HEX_ZERO = UInt128.HEX_ZERO = '00000000000000000000000000000000';
 	var HEX_ONE  = UInt128.HEX_ONE  = '00000000000000000000000000000000';
-	var XPR_ZERO = UInt128.XPR_ZERO = utils.hexToString(HEX_ZERO);
-	var XPR_ONE  = UInt128.XPR_ONE  = utils.hexToString(HEX_ONE);
+	var XPS_ZERO = UInt128.XPS_ZERO = utils.hexToString(HEX_ZERO);
+	var XPS_ONE  = UInt128.XPS_ONE  = utils.hexToString(HEX_ONE);
 
 	exports.UInt128 = UInt128;
 
@@ -24024,20 +24024,31 @@ var payshares =
 	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
+
 /***/ },
 /* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = function(module) {
+
 		if(!module.webpackPolyfill) {
+
 			module.deprecate = function() {};
+
 			module.paths = [];
+
 			// module.parent = undefined by default
+
 			module.children = [];
+
 			module.webpackPolyfill = 1;
+
 		}
+
 		return module;
+
 	}
+
 
 
 /***/ },

@@ -26,8 +26,8 @@ var ACCOUNT_ZERO = UInt160.ACCOUNT_ZERO = 'xxxxxxxxxxxxxxxxxxxxxhoLvTp';
 var ACCOUNT_ONE  = UInt160.ACCOUNT_ONE  = 'xxxxxxxxxxxxxxxxxxxxBZbvji';
 var HEX_ZERO     = UInt160.HEX_ZERO     = '0000000000000000000000000000000000000000';
 var HEX_ONE      = UInt160.HEX_ONE      = '0000000000000000000000000000000000000001';
-var XPR_ZERO     = UInt160.XPR_ZERO     = utils.hexToString(HEX_ZERO);
-var XPR_ONE      = UInt160.XPR_ONE      = utils.hexToString(HEX_ONE);
+var XPS_ZERO     = UInt160.XPS_ZERO     = utils.hexToString(HEX_ZERO);
+var XPS_ONE      = UInt160.XPS_ONE      = utils.hexToString(HEX_ONE);
 
 UInt160.prototype.set_version = function(j) {
   this._version_byte = j;

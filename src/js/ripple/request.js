@@ -343,7 +343,7 @@ Request.prototype.addBook = function(book, snapshot) {
       currency: Currency.json_rewrite(book[side].currency)
     };
 
-    if (obj.currency !== 'XPR') {
+    if (obj.currency !== 'XPS') {
       obj.issuer = UInt160.json_rewrite(book[side].issuer);
     }
   }
