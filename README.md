@@ -7,7 +7,7 @@
 ###Use payshares-lib for:
 
 + Connecting to a local or remote paysharesd in JavaScript (Node.js or browser)
-+ Issuing [paysharesd API](https://www.payshares.org/api/) requests
++ Issuing [paysharesd API](https://www.payshares.co/api/) requests
 + Listening to events on the payshares network (transaction, ledger, etc.)
 + Signing and submitting transactions to the payshares network
 
@@ -26,8 +26,8 @@
 
 ###Also see:
 
-+ https://wiki.payshares.org/
-+ https://www.payshares.org/
++ https://wiki.payshares.co/
++ https://www.payshares.co/
 
 ##Getting `payshares-lib`
 
@@ -67,7 +67,7 @@ var remote = new Remote({
   fee_cushion:     1.5,
   servers: [
     {
-        host:    'live.payshares.org'
+        host:    'live.payshares.co'
       , port:    9001
       , secure:  true
     }

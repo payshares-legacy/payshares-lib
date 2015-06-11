@@ -46,7 +46,7 @@ an issue number.
 
 * [Bug tracker (Github)](https://github.com/payshares/payshares-lib/issues)
 * <a href="https://www.clahub.com/agreements/payshares/payshares-lib">Contributor License Agreement</a>
-* [Explore the API](https://www.payshares.org/api/)
+* [Explore the API](https://www.payshares.co/api/)
 * [Readme for payshares-lib](https://github.com/payshares/payshares-lib/blob/master/README.md)
 * #payshares-dev IRC channel on freenode.org
 
