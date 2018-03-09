@@ -128,7 +128,7 @@ var payshares =
 
 	var EventEmitter = __webpack_require__(35).EventEmitter;
 	var util         = __webpack_require__(36);
-	var LRU          = __webpack_require__(48);
+	var LRU          = __webpack_require__(47);
 	var Request      = __webpack_require__(2).Request;
 	var Server       = __webpack_require__(20).Server;
 	var Amount       = __webpack_require__(3).Amount;
@@ -137,13 +137,13 @@ var payshares =
 	var Transaction  = __webpack_require__(5).Transaction;
 	var Account      = __webpack_require__(4).Account;
 	var Meta         = __webpack_require__(11).Meta;
-	var OrderBook    = __webpack_require__(31).OrderBook;
-	var PathFind     = __webpack_require__(32).PathFind;
+	var OrderBook    = __webpack_require__(22).OrderBook;
+	var PathFind     = __webpack_require__(23).PathFind;
 	var RippleError  = __webpack_require__(13).RippleError;
 	var utils        = __webpack_require__(19);
 	var sjcl         = __webpack_require__(19).sjcl;
 	var config       = __webpack_require__(21);
-	var log          = __webpack_require__(30).internal.sub('remote');
+	var log          = __webpack_require__(24).internal.sub('remote');
 
 	/**
 	 *    Interface to manage the connection to a Ripple server.
@@ -4022,16 +4022,16 @@ var payshares =
 	//
 
 	// var network = require('./network.js');
-	var async              = __webpack_require__(47);
+	var async              = __webpack_require__(48);
 	var util               = __webpack_require__(36);
 	var extend             = __webpack_require__(42);
 	var EventEmitter       = __webpack_require__(35).EventEmitter;
 	var Amount             = __webpack_require__(3).Amount;
 	var UInt160            = __webpack_require__(8).UInt160;
-	var TransactionManager = __webpack_require__(22).TransactionManager;
+	var TransactionManager = __webpack_require__(25).TransactionManager;
 	var sjcl               = __webpack_require__(19).sjcl;
 	var Base               = __webpack_require__(7).Base;
-	var Crypt              = __webpack_require__(23).Crypt;
+	var Crypt              = __webpack_require__(26).Crypt;
 
 	/**
 	 * @constructor Account
@@ -4467,7 +4467,7 @@ var payshares =
 	var Seed             = __webpack_require__(10).Seed;
 	var SerializedObject = __webpack_require__(12).SerializedObject;
 	var RippleError      = __webpack_require__(13).RippleError;
-	var hashprefixes     = __webpack_require__(24);
+	var hashprefixes     = __webpack_require__(27);
 	var config           = __webpack_require__(21);
 
 	function Transaction(remote) {
@@ -5385,7 +5385,7 @@ var payshares =
 	var extend    = __webpack_require__(42);
 	var UInt160 = __webpack_require__(8).UInt160;
 	var utils = __webpack_require__(19);
-	var Float = __webpack_require__(25).Float;
+	var Float = __webpack_require__(28).Float;
 
 	//
 	// Currency support
@@ -5922,7 +5922,7 @@ var payshares =
 
 	var BigInteger = utils.jsbn.BigInteger;
 
-	var UInt = __webpack_require__(26).UInt;
+	var UInt = __webpack_require__(29).UInt;
 	var Base = __webpack_require__(7).Base;
 
 	//
@@ -6025,7 +6025,7 @@ var payshares =
 
 	var utils  = __webpack_require__(19);
 	var extend = __webpack_require__(42);
-	var UInt   = __webpack_require__(26).UInt;
+	var UInt   = __webpack_require__(29).UInt;
 
 	//
 	// UInt256 support
@@ -6063,11 +6063,11 @@ var payshares =
 	var BigInteger = utils.jsbn.BigInteger;
 
 	var Base    = __webpack_require__(7).Base;
-	var UInt    = __webpack_require__(26).UInt;
+	var UInt    = __webpack_require__(29).UInt;
 	var UInt256 = __webpack_require__(9).UInt256;
 	var UInt160 = __webpack_require__(8).UInt160;
-	var KeyPair = __webpack_require__(27).KeyPair;
-	var Crypt   = __webpack_require__(23).Crypt;
+	var KeyPair = __webpack_require__(30).KeyPair;
+	var Crypt   = __webpack_require__(26).Crypt;
 
 	var Seed = extend(function () {
 	  // Internal form: NaN or BigInteger
@@ -6346,12 +6346,12 @@ var payshares =
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(Buffer) {var assert    = __webpack_require__(37);
+	/* WEBPACK VAR INJECTION */(function(Buffer) {var assert    = __webpack_require__(38);
 	var extend    = __webpack_require__(42);
 	var binformat = __webpack_require__(18);
-	var stypes    = __webpack_require__(28);
+	var stypes    = __webpack_require__(31);
 	var UInt256   = __webpack_require__(9).UInt256;
-	var Crypt     = __webpack_require__(23).Crypt;
+	var Crypt     = __webpack_require__(26).Crypt;
 	var utils     = __webpack_require__(19);
 
 	var sjcl = utils.sjcl;
@@ -6677,7 +6677,7 @@ var payshares =
 
 	exports.SerializedObject = SerializedObject;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 13 */
@@ -6722,12 +6722,12 @@ var payshares =
 /* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var async              = __webpack_require__(47);
-	var crypto             = __webpack_require__(39);
+	var async              = __webpack_require__(48);
+	var crypto             = __webpack_require__(40);
 	var sjcl               = __webpack_require__(19).sjcl;
 	var Remote             = __webpack_require__(1).Remote;
 	var Seed               = __webpack_require__(10).Seed;
-	var KeyPair            = __webpack_require__(27).KeyPair;
+	var KeyPair            = __webpack_require__(30).KeyPair;
 	var Account            = __webpack_require__(4).Account;
 	var UInt160            = __webpack_require__(8).UInt160;
 
@@ -6931,11 +6931,11 @@ var payshares =
 /* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var async      = __webpack_require__(47);
-	var blobClient = __webpack_require__(29).BlobClient;
+	var async      = __webpack_require__(48);
+	var blobClient = __webpack_require__(32).BlobClient;
 	var AuthInfo   = __webpack_require__(16).AuthInfo;
-	var crypt      = __webpack_require__(23).Crypt;
-	var log        = __webpack_require__(30).sub('vault');
+	var crypt      = __webpack_require__(26).Crypt;
+	var log        = __webpack_require__(24).sub('vault');
 	function VaultClient(opts) {
 	  
 	  var self = this;
@@ -7511,7 +7511,7 @@ var payshares =
 /* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var async      = __webpack_require__(47);
+	var async      = __webpack_require__(48);
 	var superagent = __webpack_require__(49);
 	var RippleTxt  = __webpack_require__(17).RippleTxt;
 
@@ -8324,7 +8324,7 @@ var payshares =
 	var EventEmitter = __webpack_require__(35).EventEmitter;
 	var Amount       = __webpack_require__(3).Amount;
 	var Transaction  = __webpack_require__(5).Transaction;
-	var log          = __webpack_require__(30).internal.sub('server');
+	var log          = __webpack_require__(24).internal.sub('server');
 
 	/**
 	 *  @constructor Server
@@ -9110,12 +9110,451 @@ var payshares =
 /* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// Routines for working with an orderbook.
+	//
+	// One OrderBook object represents one half of an order book. (i.e. bids OR
+	// asks) Which one depends on the ordering of the parameters.
+	//
+	// Events:
+	//  - transaction   A transaction that affects the order book.
+
+	// var network = require("./network.js");
+
+	var util         = __webpack_require__(36);
+	var EventEmitter = __webpack_require__(35).EventEmitter;
+	var extend       = __webpack_require__(42);
+	var Amount       = __webpack_require__(3).Amount;
+	var UInt160      = __webpack_require__(8).UInt160;
+	var Currency     = __webpack_require__(6).Currency;
+
+	function OrderBook(remote, currency_gets, issuer_gets, currency_pays, issuer_pays, key) {
+	  EventEmitter.call(this);
+
+	  var self = this;
+
+	  this._remote        = remote;
+	  this._currency_gets = currency_gets;
+	  this._issuer_gets   = issuer_gets;
+	  this._currency_pays = currency_pays;
+	  this._issuer_pays   = issuer_pays;
+	  this._subs          = 0;
+	  this._key           = key;
+
+	  // We consider ourselves synchronized if we have a current copy of the offers,
+	  // we are online and subscribed to updates.
+	  this._sync = false;
+
+	  // Offers
+	  this._offers = [ ];
+
+	  function listenerAdded(type, listener) {
+	    if (~OrderBook.subscribe_events.indexOf(type)) {
+	      self._subs += 1;
+	      if (self._subs === 1 && self._remote._connected) {
+	        self._subscribe();
+	      }
+	    }
+	  };
+
+	  this.on('newListener', listenerAdded);
+
+	  function listenerRemoved(type, listener) {
+	    if (~OrderBook.subscribe_events.indexOf(type)) {
+	      self._subs -= 1;
+	      if (!self._subs && self._remote._connected) {
+	        self._sync = false;
+	        self._remote.request_unsubscribe()
+	        .books([self.to_json()])
+	        .request();
+	      }
+	    }
+	  };
+
+	  this.on('removeListener', listenerRemoved);
+
+	  // ST: This *should* call _prepareSubscribe.
+	  this._remote.on('prepare_subscribe', function(request) {
+	    self._subscribe(request);
+	  });
+
+	  function remoteDisconnected() {
+	    self._sync = false;
+	  };
+
+	  this._remote.on('disconnect', remoteDisconnected);
+
+	  return this;
+	};
+
+	util.inherits(OrderBook, EventEmitter);
+
+	/**
+	 * List of events that require a remote subscription to the orderbook.
+	 */
+	OrderBook.subscribe_events = ['transaction', 'model', 'trade'];
+
+	/**
+	 * Subscribes to orderbook.
+	 *
+	 * @private
+	 */
+	OrderBook.prototype._subscribe = function (request) {
+	  var self = this;
+
+	  if (self.is_valid() && self._subs) {
+	    var request = this._remote.request_subscribe();
+	    request.addBook(self.to_json(), true);
+
+	    request.once('success', function(res) {
+	      self._sync   = true;
+	      self._offers = res.offers;
+	      self.emit('model', self._offers);
+	    });
+
+	    request.once('error', function(err) {
+	      // XXX What now?
+	    });
+
+	    request.request();
+	  }
+	};
+
+	/**
+	 * Adds this orderbook to a subscription request.
+
+	// ST: Currently this is not working because the server cannot give snapshots
+	//     for more than one order book in the same subscribe message.
+
+	OrderBook.prototype._prepareSubscribe = function (request) {
+	  var self = this;
+	  if (self.is_valid() && self._subs) {
+	    request.addBook(self.to_json(), true);
+	    request.once('success', function(res) {
+	      self._sync   = true;
+	      self._offers = res.offers;
+	      self.emit('model', self._offers);
+	    });
+	    request.once('error', function(err) {
+	      // XXX What now?
+	    });
+	  }
+	};
+	 */
+
+	OrderBook.prototype.to_json = function () {
+	  var json = {
+	    taker_gets: {
+	      currency: this._currency_gets
+	    },
+	    taker_pays: {
+	      currency: this._currency_pays
+	    }
+	  };
+
+	  if (this._currency_gets !== 'XPS') {
+	    json.taker_gets.issuer = this._issuer_gets;
+	  }
+
+	  if (this._currency_pays !== 'XPS') {
+	    json.taker_pays.issuer = this._issuer_pays;
+	  }
+
+	  return json;
+	};
+
+	/**
+	 * Whether the OrderBook is valid.
+	 *
+	 * Note: This only checks whether the parameters (currencies and issuer) are
+	 *       syntactically valid. It does not check anything against the ledger.
+	 */
+	OrderBook.prototype.is_valid = function () {
+	  // XXX Should check for same currency (non-native) && same issuer
+	  return (
+	    Currency.is_valid(this._currency_pays) &&
+	    (this._currency_pays === 'XPS' || UInt160.is_valid(this._issuer_pays)) &&
+	    Currency.is_valid(this._currency_gets) &&
+	    (this._currency_gets === 'XPS' || UInt160.is_valid(this._issuer_gets)) &&
+	    !(this._currency_pays === 'XPS' && this._currency_gets === 'XPS')
+	  );
+	};
+
+	OrderBook.prototype.trade = function(type) {
+	  var tradeXpr = '0'
+	  + ((this['_currency_' + type] === 'XPS') ? '' : '/'
+	     + this['_currency_' + type ] + '/'
+	     + this['_issuer_' + type]);
+	  return Amount.from_json(tradeXpr);
+	};
+
+	/**
+	 * Notify object of a relevant transaction.
+	 *
+	 * This is only meant to be called by the Remote class. You should never have to
+	 * call this yourself.
+	 */
+	OrderBook.prototype.notify = function (message) {
+	  var self       = this;
+	  var changed    = false;
+	  var trade_gets = this.trade('gets');
+	  var trade_pays = this.trade('pays');
+
+	  function handleTransaction(an) {
+	    if (an.entryType !== 'Offer' || an.bookKey !== self._key) {
+	      return;
+	    }
+
+	    var i, l, offer;
+
+	    switch(an.diffType) {
+	      case 'DeletedNode':
+	      case 'ModifiedNode':
+	        var deletedNode = an.diffType === 'DeletedNode';
+
+	        for (i=0, l=self._offers.length; i<l; i++) {
+	          offer = self._offers[i];
+
+	          if (offer.index === an.ledgerIndex) {
+	            if (deletedNode) {
+	              self._offers.splice(i, 1);
+	            } else {
+	              // TODO: This assumes no fields are deleted, which is probably a
+	              // safe assumption, but should be checked.
+	              extend(offer, an.fieldsFinal);
+	            }
+
+	            changed = true;
+	            break;
+	          }
+	        }
+
+	        // We don't want to count a OfferCancel as a trade
+	        if (message.transaction.TransactionType === 'OfferCancel') {
+	          return;
+	        }
+
+	        trade_gets = trade_gets.add(an.fieldsPrev.TakerGets);
+	        trade_pays = trade_pays.add(an.fieldsPrev.TakerPays);
+
+	        if (!deletedNode) {
+	          trade_gets = trade_gets.subtract(an.fieldsFinal.TakerGets);
+	          trade_pays = trade_pays.subtract(an.fieldsFinal.TakerPays);
+	        }
+	        break;
+
+	      case 'CreatedNode':
+	        // XXX Should use Amount#from_quality
+	        var price = Amount.from_json(an.fields.TakerPays).ratio_human(an.fields.TakerGets, {reference_date: new Date()});
+
+	        for (i = 0, l = self._offers.length; i < l; i++) {
+	          offer = self._offers[i];
+	          var priceItem = Amount.from_json(offer.TakerPays).ratio_human(offer.TakerGets, {reference_date: new Date()});
+
+	          if (price.compareTo(priceItem) <= 0) {
+	            var obj   = an.fields;
+	            obj.index = an.ledgerIndex;
+	            self._offers.splice(i, 0, an.fields);
+	            changed = true;
+	            break;
+	          }
+	        }
+	        break;
+	    }
+	  };
+
+	  message.mmeta.each(handleTransaction);
+
+	  // Only trigger the event if the account object is actually
+	  // subscribed - this prevents some weird phantom events from
+	  // occurring.
+	  if (this._subs) {
+	    this.emit('transaction', message);
+	    if (changed) {
+	      this.emit('model', this._offers);
+	    }
+	    if (!trade_gets.is_zero()) {
+	      this.emit('trade', trade_pays, trade_gets);
+	    }
+	  }
+	};
+
+	OrderBook.prototype.notifyTx = OrderBook.prototype.notify;
+
+	/**
+	 * Get offers model asynchronously.
+	 *
+	 * This function takes a callback and calls it with an array containing the
+	 * current set of offers in this order book.
+	 *
+	 * If the data is available immediately, the callback may be called synchronously.
+	 */
+	OrderBook.prototype.offers = function (callback) {
+	  var self = this;
+
+	  if (typeof callback === 'function') {
+	    if (this._sync) {
+	      callback(this._offers);
+	    } else {
+	      this.once('model', callback);
+	    }
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Return latest known offers.
+	 *
+	 * Usually, this will just be an empty array if the order book hasn't been
+	 * loaded yet. But this accessor may be convenient in some circumstances.
+	 */
+	OrderBook.prototype.offersSync = function () {
+	  return this._offers;
+	};
+
+	exports.OrderBook = OrderBook;
+
+	// vim:sw=2:sts=2:ts=8:et
+
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var EventEmitter = __webpack_require__(35).EventEmitter;
+	var util         = __webpack_require__(36);
+	var Amount       = __webpack_require__(3).Amount;
+	var extend       = __webpack_require__(42);
+
+	/**
+	 * Represents a persistent path finding request.
+	 *
+	 * Only one path find request is allowed per connection, so when another path
+	 * find request is triggered it will supercede the existing one, making it emit
+	 * the 'end' and 'superceded' events.
+	 */
+	function PathFind(remote, src_account, dst_account, dst_amount, src_currencies) {
+	  EventEmitter.call(this);
+
+	  this.remote = remote;
+
+	  this.src_account    = src_account;
+	  this.dst_account    = dst_account;
+	  this.dst_amount     = dst_amount;
+	  this.src_currencies = src_currencies;
+	};
+
+	util.inherits(PathFind, EventEmitter);
+
+	/**
+	 * Submits a path_find_create request to the network.
+	 *
+	 * This starts a path find request, superceding all previous path finds.
+	 *
+	 * This will be called automatically by Remote when this object is instantiated,
+	 * so you should only have to call it if the path find was closed or superceded
+	 * and you wish to restart it.
+	 */
+	PathFind.prototype.create = function () {
+	  var self = this;
+
+	  var req = this.remote.request_path_find_create(this.src_account,
+	                                                 this.dst_account,
+	                                                 this.dst_amount,
+	                                                 this.src_currencies,
+	                                                 handleInitialPath);
+
+	  function handleInitialPath(err, msg) {
+	    if (err) {
+	      self.emit('error', err);
+	    } else {
+	      self.notify_update(msg);
+	    }
+	  }
+
+	  // XXX We should add ourselves to prepare_subscribe or a similar mechanism so
+	  // that we can resubscribe after a reconnection.
+
+	  req.request();
+	};
+
+	PathFind.prototype.close = function () {
+	  this.remote.request_path_find_close().request();
+	  this.emit('end');
+	  this.emit('close');
+	};
+
+	PathFind.prototype.notify_update = function (message) {
+	  var src_account = message.source_account;
+	  var dst_account = message.destination_account;
+	  var dst_amount  = Amount.from_json(message.destination_amount);
+
+	  // Only pass the event along if this path find response matches what we were
+	  // looking for.
+	  if (this.src_account === src_account &&
+	      this.dst_account === dst_account &&
+	      this.dst_amount.equals(dst_amount)) {
+	    this.emit('update', message);
+	  }
+	};
+
+	PathFind.prototype.notify_superceded = function () {
+	  // XXX If we're set to re-subscribe whenever we connect to a new server, then
+	  // we should cancel that behavior here. See PathFind#create.
+
+	  this.emit('end');
+	  this.emit('superceded');
+	};
+
+	exports.PathFind = PathFind;
+
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var exports = module.exports = __webpack_require__(37);
+
+	/**
+	 * Log engine for browser consoles.
+	 *
+	 * Browsers tend to have better consoles that support nicely formatted
+	 * JavaScript objects. This connector passes objects through to the logging
+	 * function without any stringification.
+	 */
+	var InteractiveLogEngine = {
+	  logObject: function (msg, obj) {
+	    var args = Array.prototype.slice.call(arguments, 1);
+
+	    args = args.map(function(arg) {
+	      if (/MSIE/.test(navigator.userAgent)) {
+	        return JSON.stringify(arg, null, 2);
+	      } else {
+	        return arg;
+	      }
+	    });
+
+	    args.unshift(msg);
+
+	    console.log.apply(console, args);
+	  }
+	};
+
+	if (window.console && window.console.log) {
+	  exports.Log.engine = InteractiveLogEngine;
+	}
+
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var util         = __webpack_require__(36);
 	var EventEmitter = __webpack_require__(35).EventEmitter;
 	var Transaction  = __webpack_require__(5).Transaction;
 	var RippleError  = __webpack_require__(13).RippleError;
 	var PendingQueue = __webpack_require__(43).TransactionQueue;
-	var log          = __webpack_require__(30).internal.sub('transactionmanager');
+	var log          = __webpack_require__(24).internal.sub('transactionmanager');
 
 	/**
 	 * @constructor TransactionManager
@@ -9777,7 +10216,7 @@ var payshares =
 
 
 /***/ },
-/* 23 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {var sjcl        = __webpack_require__(19).sjcl;
@@ -10109,10 +10548,10 @@ var payshares =
 
 	exports.Crypt = Crypt;
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
-/* 24 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10143,7 +10582,7 @@ var payshares =
 
 
 /***/ },
-/* 25 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Convert a JavaScript number to IEEE-754 Double Precision
@@ -10255,7 +10694,7 @@ var payshares =
 	}
 
 /***/ },
-/* 26 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var utils   = __webpack_require__(19);
@@ -10557,7 +10996,7 @@ var payshares =
 
 
 /***/ },
-/* 27 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var sjcl = __webpack_require__(19).sjcl;
@@ -10566,7 +11005,7 @@ var payshares =
 	var UInt160 = __webpack_require__(8).UInt160;
 	var UInt256 = __webpack_require__(9).UInt256;
 	var Base    = __webpack_require__(7).Base;
-	var Crypt   = __webpack_require__(23).Crypt;
+	var Crypt   = __webpack_require__(26).Crypt;
 
 	/**
 	 * Creates an ED25519 key pair for signing.
@@ -10654,7 +11093,7 @@ var payshares =
 
 
 /***/ },
-/* 28 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10665,7 +11104,7 @@ var payshares =
 	 * SerializedObject.parse() or SerializedObject.serialize().
 	 */
 
-	var assert    = __webpack_require__(37);
+	var assert    = __webpack_require__(38);
 	var extend    = __webpack_require__(42);
 	var binformat = __webpack_require__(18);
 	var utils     = __webpack_require__(19);
@@ -11414,14 +11853,14 @@ var payshares =
 
 
 /***/ },
-/* 29 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var crypt   = __webpack_require__(23).Crypt;
+	var crypt   = __webpack_require__(26).Crypt;
 	var SignedRequest = __webpack_require__(45).SignedRequest;
 	var request  = __webpack_require__(49);
 	var extend   = __webpack_require__(42);
-	var async    = __webpack_require__(47);
+	var async    = __webpack_require__(48);
 
 	var BlobClient = {};
 
@@ -12530,445 +12969,6 @@ var payshares =
 	};
 
 	exports.BlobClient = BlobClient;
-
-
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var exports = module.exports = __webpack_require__(40);
-
-	/**
-	 * Log engine for browser consoles.
-	 *
-	 * Browsers tend to have better consoles that support nicely formatted
-	 * JavaScript objects. This connector passes objects through to the logging
-	 * function without any stringification.
-	 */
-	var InteractiveLogEngine = {
-	  logObject: function (msg, obj) {
-	    var args = Array.prototype.slice.call(arguments, 1);
-
-	    args = args.map(function(arg) {
-	      if (/MSIE/.test(navigator.userAgent)) {
-	        return JSON.stringify(arg, null, 2);
-	      } else {
-	        return arg;
-	      }
-	    });
-
-	    args.unshift(msg);
-
-	    console.log.apply(console, args);
-	  }
-	};
-
-	if (window.console && window.console.log) {
-	  exports.Log.engine = InteractiveLogEngine;
-	}
-
-
-/***/ },
-/* 31 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// Routines for working with an orderbook.
-	//
-	// One OrderBook object represents one half of an order book. (i.e. bids OR
-	// asks) Which one depends on the ordering of the parameters.
-	//
-	// Events:
-	//  - transaction   A transaction that affects the order book.
-
-	// var network = require("./network.js");
-
-	var util         = __webpack_require__(36);
-	var EventEmitter = __webpack_require__(35).EventEmitter;
-	var extend       = __webpack_require__(42);
-	var Amount       = __webpack_require__(3).Amount;
-	var UInt160      = __webpack_require__(8).UInt160;
-	var Currency     = __webpack_require__(6).Currency;
-
-	function OrderBook(remote, currency_gets, issuer_gets, currency_pays, issuer_pays, key) {
-	  EventEmitter.call(this);
-
-	  var self = this;
-
-	  this._remote        = remote;
-	  this._currency_gets = currency_gets;
-	  this._issuer_gets   = issuer_gets;
-	  this._currency_pays = currency_pays;
-	  this._issuer_pays   = issuer_pays;
-	  this._subs          = 0;
-	  this._key           = key;
-
-	  // We consider ourselves synchronized if we have a current copy of the offers,
-	  // we are online and subscribed to updates.
-	  this._sync = false;
-
-	  // Offers
-	  this._offers = [ ];
-
-	  function listenerAdded(type, listener) {
-	    if (~OrderBook.subscribe_events.indexOf(type)) {
-	      self._subs += 1;
-	      if (self._subs === 1 && self._remote._connected) {
-	        self._subscribe();
-	      }
-	    }
-	  };
-
-	  this.on('newListener', listenerAdded);
-
-	  function listenerRemoved(type, listener) {
-	    if (~OrderBook.subscribe_events.indexOf(type)) {
-	      self._subs -= 1;
-	      if (!self._subs && self._remote._connected) {
-	        self._sync = false;
-	        self._remote.request_unsubscribe()
-	        .books([self.to_json()])
-	        .request();
-	      }
-	    }
-	  };
-
-	  this.on('removeListener', listenerRemoved);
-
-	  // ST: This *should* call _prepareSubscribe.
-	  this._remote.on('prepare_subscribe', function(request) {
-	    self._subscribe(request);
-	  });
-
-	  function remoteDisconnected() {
-	    self._sync = false;
-	  };
-
-	  this._remote.on('disconnect', remoteDisconnected);
-
-	  return this;
-	};
-
-	util.inherits(OrderBook, EventEmitter);
-
-	/**
-	 * List of events that require a remote subscription to the orderbook.
-	 */
-	OrderBook.subscribe_events = ['transaction', 'model', 'trade'];
-
-	/**
-	 * Subscribes to orderbook.
-	 *
-	 * @private
-	 */
-	OrderBook.prototype._subscribe = function (request) {
-	  var self = this;
-
-	  if (self.is_valid() && self._subs) {
-	    var request = this._remote.request_subscribe();
-	    request.addBook(self.to_json(), true);
-
-	    request.once('success', function(res) {
-	      self._sync   = true;
-	      self._offers = res.offers;
-	      self.emit('model', self._offers);
-	    });
-
-	    request.once('error', function(err) {
-	      // XXX What now?
-	    });
-
-	    request.request();
-	  }
-	};
-
-	/**
-	 * Adds this orderbook to a subscription request.
-
-	// ST: Currently this is not working because the server cannot give snapshots
-	//     for more than one order book in the same subscribe message.
-
-	OrderBook.prototype._prepareSubscribe = function (request) {
-	  var self = this;
-	  if (self.is_valid() && self._subs) {
-	    request.addBook(self.to_json(), true);
-	    request.once('success', function(res) {
-	      self._sync   = true;
-	      self._offers = res.offers;
-	      self.emit('model', self._offers);
-	    });
-	    request.once('error', function(err) {
-	      // XXX What now?
-	    });
-	  }
-	};
-	 */
-
-	OrderBook.prototype.to_json = function () {
-	  var json = {
-	    taker_gets: {
-	      currency: this._currency_gets
-	    },
-	    taker_pays: {
-	      currency: this._currency_pays
-	    }
-	  };
-
-	  if (this._currency_gets !== 'XPS') {
-	    json.taker_gets.issuer = this._issuer_gets;
-	  }
-
-	  if (this._currency_pays !== 'XPS') {
-	    json.taker_pays.issuer = this._issuer_pays;
-	  }
-
-	  return json;
-	};
-
-	/**
-	 * Whether the OrderBook is valid.
-	 *
-	 * Note: This only checks whether the parameters (currencies and issuer) are
-	 *       syntactically valid. It does not check anything against the ledger.
-	 */
-	OrderBook.prototype.is_valid = function () {
-	  // XXX Should check for same currency (non-native) && same issuer
-	  return (
-	    Currency.is_valid(this._currency_pays) &&
-	    (this._currency_pays === 'XPS' || UInt160.is_valid(this._issuer_pays)) &&
-	    Currency.is_valid(this._currency_gets) &&
-	    (this._currency_gets === 'XPS' || UInt160.is_valid(this._issuer_gets)) &&
-	    !(this._currency_pays === 'XPS' && this._currency_gets === 'XPS')
-	  );
-	};
-
-	OrderBook.prototype.trade = function(type) {
-	  var tradeXpr = '0'
-	  + ((this['_currency_' + type] === 'XPS') ? '' : '/'
-	     + this['_currency_' + type ] + '/'
-	     + this['_issuer_' + type]);
-	  return Amount.from_json(tradeXpr);
-	};
-
-	/**
-	 * Notify object of a relevant transaction.
-	 *
-	 * This is only meant to be called by the Remote class. You should never have to
-	 * call this yourself.
-	 */
-	OrderBook.prototype.notify = function (message) {
-	  var self       = this;
-	  var changed    = false;
-	  var trade_gets = this.trade('gets');
-	  var trade_pays = this.trade('pays');
-
-	  function handleTransaction(an) {
-	    if (an.entryType !== 'Offer' || an.bookKey !== self._key) {
-	      return;
-	    }
-
-	    var i, l, offer;
-
-	    switch(an.diffType) {
-	      case 'DeletedNode':
-	      case 'ModifiedNode':
-	        var deletedNode = an.diffType === 'DeletedNode';
-
-	        for (i=0, l=self._offers.length; i<l; i++) {
-	          offer = self._offers[i];
-
-	          if (offer.index === an.ledgerIndex) {
-	            if (deletedNode) {
-	              self._offers.splice(i, 1);
-	            } else {
-	              // TODO: This assumes no fields are deleted, which is probably a
-	              // safe assumption, but should be checked.
-	              extend(offer, an.fieldsFinal);
-	            }
-
-	            changed = true;
-	            break;
-	          }
-	        }
-
-	        // We don't want to count a OfferCancel as a trade
-	        if (message.transaction.TransactionType === 'OfferCancel') {
-	          return;
-	        }
-
-	        trade_gets = trade_gets.add(an.fieldsPrev.TakerGets);
-	        trade_pays = trade_pays.add(an.fieldsPrev.TakerPays);
-
-	        if (!deletedNode) {
-	          trade_gets = trade_gets.subtract(an.fieldsFinal.TakerGets);
-	          trade_pays = trade_pays.subtract(an.fieldsFinal.TakerPays);
-	        }
-	        break;
-
-	      case 'CreatedNode':
-	        // XXX Should use Amount#from_quality
-	        var price = Amount.from_json(an.fields.TakerPays).ratio_human(an.fields.TakerGets, {reference_date: new Date()});
-
-	        for (i = 0, l = self._offers.length; i < l; i++) {
-	          offer = self._offers[i];
-	          var priceItem = Amount.from_json(offer.TakerPays).ratio_human(offer.TakerGets, {reference_date: new Date()});
-
-	          if (price.compareTo(priceItem) <= 0) {
-	            var obj   = an.fields;
-	            obj.index = an.ledgerIndex;
-	            self._offers.splice(i, 0, an.fields);
-	            changed = true;
-	            break;
-	          }
-	        }
-	        break;
-	    }
-	  };
-
-	  message.mmeta.each(handleTransaction);
-
-	  // Only trigger the event if the account object is actually
-	  // subscribed - this prevents some weird phantom events from
-	  // occurring.
-	  if (this._subs) {
-	    this.emit('transaction', message);
-	    if (changed) {
-	      this.emit('model', this._offers);
-	    }
-	    if (!trade_gets.is_zero()) {
-	      this.emit('trade', trade_pays, trade_gets);
-	    }
-	  }
-	};
-
-	OrderBook.prototype.notifyTx = OrderBook.prototype.notify;
-
-	/**
-	 * Get offers model asynchronously.
-	 *
-	 * This function takes a callback and calls it with an array containing the
-	 * current set of offers in this order book.
-	 *
-	 * If the data is available immediately, the callback may be called synchronously.
-	 */
-	OrderBook.prototype.offers = function (callback) {
-	  var self = this;
-
-	  if (typeof callback === 'function') {
-	    if (this._sync) {
-	      callback(this._offers);
-	    } else {
-	      this.once('model', callback);
-	    }
-	  }
-
-	  return this;
-	};
-
-	/**
-	 * Return latest known offers.
-	 *
-	 * Usually, this will just be an empty array if the order book hasn't been
-	 * loaded yet. But this accessor may be convenient in some circumstances.
-	 */
-	OrderBook.prototype.offersSync = function () {
-	  return this._offers;
-	};
-
-	exports.OrderBook = OrderBook;
-
-	// vim:sw=2:sts=2:ts=8:et
-
-
-/***/ },
-/* 32 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var EventEmitter = __webpack_require__(35).EventEmitter;
-	var util         = __webpack_require__(36);
-	var Amount       = __webpack_require__(3).Amount;
-	var extend       = __webpack_require__(42);
-
-	/**
-	 * Represents a persistent path finding request.
-	 *
-	 * Only one path find request is allowed per connection, so when another path
-	 * find request is triggered it will supercede the existing one, making it emit
-	 * the 'end' and 'superceded' events.
-	 */
-	function PathFind(remote, src_account, dst_account, dst_amount, src_currencies) {
-	  EventEmitter.call(this);
-
-	  this.remote = remote;
-
-	  this.src_account    = src_account;
-	  this.dst_account    = dst_account;
-	  this.dst_amount     = dst_amount;
-	  this.src_currencies = src_currencies;
-	};
-
-	util.inherits(PathFind, EventEmitter);
-
-	/**
-	 * Submits a path_find_create request to the network.
-	 *
-	 * This starts a path find request, superceding all previous path finds.
-	 *
-	 * This will be called automatically by Remote when this object is instantiated,
-	 * so you should only have to call it if the path find was closed or superceded
-	 * and you wish to restart it.
-	 */
-	PathFind.prototype.create = function () {
-	  var self = this;
-
-	  var req = this.remote.request_path_find_create(this.src_account,
-	                                                 this.dst_account,
-	                                                 this.dst_amount,
-	                                                 this.src_currencies,
-	                                                 handleInitialPath);
-
-	  function handleInitialPath(err, msg) {
-	    if (err) {
-	      self.emit('error', err);
-	    } else {
-	      self.notify_update(msg);
-	    }
-	  }
-
-	  // XXX We should add ourselves to prepare_subscribe or a similar mechanism so
-	  // that we can resubscribe after a reconnection.
-
-	  req.request();
-	};
-
-	PathFind.prototype.close = function () {
-	  this.remote.request_path_find_close().request();
-	  this.emit('end');
-	  this.emit('close');
-	};
-
-	PathFind.prototype.notify_update = function (message) {
-	  var src_account = message.source_account;
-	  var dst_account = message.destination_account;
-	  var dst_amount  = Amount.from_json(message.destination_amount);
-
-	  // Only pass the event along if this path find response matches what we were
-	  // looking for.
-	  if (this.src_account === src_account &&
-	      this.dst_account === dst_account &&
-	      this.dst_amount.equals(dst_amount)) {
-	    this.emit('update', message);
-	  }
-	};
-
-	PathFind.prototype.notify_superceded = function () {
-	  // XXX If we're set to re-subscribe whenever we connect to a new server, then
-	  // we should cancel that behavior here. See PathFind#create.
-
-	  this.emit('end');
-	  this.emit('superceded');
-	};
-
-	exports.PathFind = PathFind;
 
 
 /***/ },
@@ -15137,6 +15137,121 @@ var payshares =
 /* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/**
+	 * Logging functionality for ripple-lib and any applications built on it.
+	 */
+	function Log(namespace) {
+	  if (!namespace) {
+	    this._namespace = [];
+	  } else if (Array.isArray(namespace)) {
+	    this._namespace = namespace;
+	  } else {
+	    this._namespace = [''+namespace];
+	  }
+
+	  this._prefix = this._namespace.concat(['']).join(': ');
+	};
+
+	/**
+	 * Create a sub-logger.
+	 *
+	 * You can have a hierarchy of loggers.
+	 *
+	 * @example
+	 *
+	 *   var log = require('ripple').log.sub('server');
+	 *
+	 *   log.info('connection successful');
+	 *   // prints: 'server: connection successful'
+	 */
+	Log.prototype.sub = function(namespace) {
+	  var subNamespace = this._namespace.slice();
+
+	  if (namespace && typeof namespace === 'string') {
+	    subNamespace.push(namespace);
+	  }
+
+	  var subLogger = new Log(subNamespace);
+	  subLogger._setParent(this);
+	  return subLogger;
+	};
+
+	Log.prototype._setParent = function(parentLogger) {
+	  this._parent = parentLogger;
+	};
+
+	Log.makeLevel = function(level) {
+	  return function() {
+	    var args = Array.prototype.slice.call(arguments);
+	    args[0] = this._prefix + args[0];
+	    Log.engine.logObject.apply(Log, args);
+	  };
+	};
+
+	Log.prototype.debug = Log.makeLevel(1);
+	Log.prototype.info  = Log.makeLevel(2);
+	Log.prototype.warn  = Log.makeLevel(3);
+	Log.prototype.error = Log.makeLevel(4);
+
+	/**
+	 * Basic logging connector.
+	 *
+	 * This engine has no formatting and works with the most basic of 'console.log'
+	 * implementations. This is the logging engine used in Node.js.
+	 */
+	var BasicLogEngine = {
+	  logObject: function logObject(msg) {
+	    var args = Array.prototype.slice.call(arguments, 1);
+
+	    args = args.map(function(arg) {
+	      return JSON.stringify(arg, null, 2);
+	    });
+
+	    args.unshift(msg);
+
+	    console.log.apply(console, args);
+	  }
+	};
+
+	/**
+	 * Null logging connector.
+	 *
+	 * This engine simply swallows all messages. Used when console.log is not
+	 * available.
+	 */
+	var NullLogEngine = {
+	  logObject: function() {}
+	};
+
+	Log.engine = NullLogEngine;
+
+	if (console && console.log) {
+	  Log.engine = BasicLogEngine;
+	}
+
+	/**
+	 * Provide a root logger as our main export.
+	 *
+	 * This means you can use the logger easily on the fly:
+	 *     ripple.log.debug('My object is', myObj);
+	 */
+	module.exports = new Log();
+
+	/**
+	 * This is the logger for ripple-lib internally.
+	 */
+	module.exports.internal = module.exports.sub();
+
+	/**
+	 * Expose the class as well.
+	 */
+	module.exports.Log = Log;
+
+
+/***/ },
+/* 38 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// http://wiki.commonjs.org/wiki/Unit_Testing/1.0
 	//
 	// THIS IS NOT TESTED NOR LIKELY TO WORK OUTSIDE V8!
@@ -15500,7 +15615,7 @@ var payshares =
 
 
 /***/ },
-/* 38 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {/*!
@@ -16613,10 +16728,10 @@ var payshares =
 	  if (!test) throw new Error(message || 'Failed assertion')
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
-/* 39 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(Buffer) {var rng = __webpack_require__(51)
@@ -16674,122 +16789,7 @@ var payshares =
 	  }
 	})
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/**
-	 * Logging functionality for ripple-lib and any applications built on it.
-	 */
-	function Log(namespace) {
-	  if (!namespace) {
-	    this._namespace = [];
-	  } else if (Array.isArray(namespace)) {
-	    this._namespace = namespace;
-	  } else {
-	    this._namespace = [''+namespace];
-	  }
-
-	  this._prefix = this._namespace.concat(['']).join(': ');
-	};
-
-	/**
-	 * Create a sub-logger.
-	 *
-	 * You can have a hierarchy of loggers.
-	 *
-	 * @example
-	 *
-	 *   var log = require('ripple').log.sub('server');
-	 *
-	 *   log.info('connection successful');
-	 *   // prints: 'server: connection successful'
-	 */
-	Log.prototype.sub = function(namespace) {
-	  var subNamespace = this._namespace.slice();
-
-	  if (namespace && typeof namespace === 'string') {
-	    subNamespace.push(namespace);
-	  }
-
-	  var subLogger = new Log(subNamespace);
-	  subLogger._setParent(this);
-	  return subLogger;
-	};
-
-	Log.prototype._setParent = function(parentLogger) {
-	  this._parent = parentLogger;
-	};
-
-	Log.makeLevel = function(level) {
-	  return function() {
-	    var args = Array.prototype.slice.call(arguments);
-	    args[0] = this._prefix + args[0];
-	    Log.engine.logObject.apply(Log, args);
-	  };
-	};
-
-	Log.prototype.debug = Log.makeLevel(1);
-	Log.prototype.info  = Log.makeLevel(2);
-	Log.prototype.warn  = Log.makeLevel(3);
-	Log.prototype.error = Log.makeLevel(4);
-
-	/**
-	 * Basic logging connector.
-	 *
-	 * This engine has no formatting and works with the most basic of 'console.log'
-	 * implementations. This is the logging engine used in Node.js.
-	 */
-	var BasicLogEngine = {
-	  logObject: function logObject(msg) {
-	    var args = Array.prototype.slice.call(arguments, 1);
-
-	    args = args.map(function(arg) {
-	      return JSON.stringify(arg, null, 2);
-	    });
-
-	    args.unshift(msg);
-
-	    console.log.apply(console, args);
-	  }
-	};
-
-	/**
-	 * Null logging connector.
-	 *
-	 * This engine simply swallows all messages. Used when console.log is not
-	 * available.
-	 */
-	var NullLogEngine = {
-	  logObject: function() {}
-	};
-
-	Log.engine = NullLogEngine;
-
-	if (console && console.log) {
-	  Log.engine = BasicLogEngine;
-	}
-
-	/**
-	 * Provide a root logger as our main export.
-	 *
-	 * This means you can use the logger easily on the fly:
-	 *     ripple.log.debug('My object is', myObj);
-	 */
-	module.exports = new Log();
-
-	/**
-	 * This is the logger for ripple-lib internally.
-	 */
-	module.exports.internal = module.exports.sub();
-
-	/**
-	 * Expose the class as well.
-	 */
-	module.exports.Log = Log;
-
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 41 */
@@ -16820,7 +16820,7 @@ var payshares =
 	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 	// USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-	var punycode = __webpack_require__(65);
+	var punycode = __webpack_require__(64);
 
 	exports.parse = urlParse;
 	exports.resolve = urlResolve;
@@ -16888,7 +16888,7 @@ var payshares =
 	      'gopher:': true,
 	      'file:': true
 	    },
-	    querystring = __webpack_require__(64);
+	    querystring = __webpack_require__(65);
 
 	function urlParse(url, parseQueryString, slashesDenoteHost) {
 	  if (url && typeof(url) === 'object' && url.href) return url;
@@ -17521,7 +17521,7 @@ var payshares =
 	 * Manager for pending transactions
 	 */
 
-	var LRU = __webpack_require__(48);
+	var LRU = __webpack_require__(47);
 	var Transaction = __webpack_require__(5).Transaction;
 
 	function TransactionQueue() {
@@ -17627,7 +17627,7 @@ var payshares =
 
 	var utils  = __webpack_require__(19);
 	var extend = __webpack_require__(42);
-	var UInt   = __webpack_require__(26).UInt;
+	var UInt   = __webpack_require__(29).UInt;
 
 	//
 	// UInt128 support
@@ -17654,7 +17654,7 @@ var payshares =
 /* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Crypt = __webpack_require__(23).Crypt;
+	var Crypt = __webpack_require__(26).Crypt;
 	var Message = __webpack_require__(14).Message;
 	var parser  = __webpack_require__(41);
 	var querystring = __webpack_require__(50);
@@ -17906,7 +17906,7 @@ var payshares =
 	b){var c,d,e=this.D[a],f=[];for(d in e)e.hasOwnProperty(d)&&e[d]===b&&f.push(d);for(c=0;c<f.length;c++)d=f[c],delete e[d]},da:function(){Q(1)},ga:function(a){var b,c;try{b=a.x||a.clientX||a.offsetX||0,c=a.y||a.clientY||a.offsetY||0}catch(d){c=b=0}0!=b&&0!=c&&sjcl.random.addEntropy([b,c],2,"mouse");Q(0)},fa:function(){Q(2)},X:function(a){a=a.accelerationIncludingGravity.x||a.accelerationIncludingGravity.y||a.accelerationIncludingGravity.z;if(window.orientation){var b=window.orientation;"number"===
 	typeof b&&sjcl.random.addEntropy(b,1,"accelerometer")}a&&sjcl.random.addEntropy(a,2,"accelerometer");Q(0)}};function ga(a,b){var c,d=sjcl.random.D[a],e=[];for(c in d)d.hasOwnProperty(c)&&e.push(d[c]);for(c=0;c<e.length;c++)e[c](b)}function Q(a){"undefined"!==typeof window&&window.performance&&"function"===typeof window.performance.now?sjcl.random.addEntropy(window.performance.now(),a,"loadtime"):sjcl.random.addEntropy((new Date).valueOf(),a,"loadtime")}
 	function fa(a){a.b=B(a).concat(B(a));a.F=new sjcl.cipher.aes(a.b)}function B(a){for(var b=0;4>b&&!(a.l[b]=a.l[b]+1|0,a.l[b]);b++);return a.F.encrypt(a.l)}function P(a,b){return function(){b.apply(a,arguments)}}sjcl.random=new sjcl.prng(6);
-	a:try{var R,S,X,Y;if(Y="undefined"!==typeof module){var Z;if(Z=module.exports){var ha;try{ha=__webpack_require__(39)}catch(ma){ha=null}Z=(S=ha)&&S.randomBytes}Y=Z}if(Y)R=S.randomBytes(128),R=new Uint32Array((new Uint8Array(R)).buffer),sjcl.random.addEntropy(R,1024,"crypto['randomBytes']");else if("undefined"!==typeof window&&"undefined"!==typeof Uint32Array){X=new Uint32Array(32);if(window.crypto&&window.crypto.getRandomValues)window.crypto.getRandomValues(X);else if(window.msCrypto&&window.msCrypto.getRandomValues)window.msCrypto.getRandomValues(X);
+	a:try{var R,S,X,Y;if(Y="undefined"!==typeof module){var Z;if(Z=module.exports){var ha;try{ha=__webpack_require__(40)}catch(ma){ha=null}Z=(S=ha)&&S.randomBytes}Y=Z}if(Y)R=S.randomBytes(128),R=new Uint32Array((new Uint8Array(R)).buffer),sjcl.random.addEntropy(R,1024,"crypto['randomBytes']");else if("undefined"!==typeof window&&"undefined"!==typeof Uint32Array){X=new Uint32Array(32);if(window.crypto&&window.crypto.getRandomValues)window.crypto.getRandomValues(X);else if(window.msCrypto&&window.msCrypto.getRandomValues)window.msCrypto.getRandomValues(X);
 	else break a;sjcl.random.addEntropy(X,1024,"crypto['getRandomValues']")}}catch(pa){"undefined"!==typeof window&&window.console&&(console.log("There was an error collecting entropy from the browser:"),console.log(pa))}
 	sjcl.json={defaults:{v:1,iter:1E3,ks:128,ts:64,mode:"ccm",adata:"",cipher:"aes"},aa:function(a,b,c,d){c=c||{};d=d||{};var e=sjcl.json,f=e.k({iv:sjcl.random.randomWords(4,0)},e.defaults),g;e.k(f,c);c=f.adata;"string"===typeof f.salt&&(f.salt=sjcl.codec.base64.toBits(f.salt));"string"===typeof f.iv&&(f.iv=sjcl.codec.base64.toBits(f.iv));(!sjcl.mode[f.mode]||!sjcl.cipher[f.cipher]||"string"===typeof a&&100>=f.iter||64!==f.ts&&96!==f.ts&&128!==f.ts||128!==f.ks&&192!==f.ks&&0x100!==f.ks||2>f.iv.length||
 	4<f.iv.length)&&q(new sjcl.exception.invalid("json encrypt: invalid parameters"));"string"===typeof a?(g=sjcl.misc.cachedPbkdf2(a,f),a=g.key.slice(0,f.ks/32),f.salt=g.salt):sjcl.ecc&&a instanceof sjcl.ecc.elGamal.publicKey&&(g=a.kem(),f.kemtag=g.tag,a=g.key.slice(0,f.ks/32));"string"===typeof b&&(b=sjcl.codec.utf8String.toBits(b));"string"===typeof c&&(c=sjcl.codec.utf8String.toBits(c));g=new sjcl.cipher[f.cipher](a);e.k(d,f);d.key=a;f.ct=sjcl.mode[f.mode].encrypt(g,b,f.iv,c,f.ts);return f},encrypt:function(a,
@@ -17947,6 +17947,265 @@ var payshares =
 
 /***/ },
 /* 47 */
+/***/ function(module, exports, __webpack_require__) {
+
+	;(function () { // closure for web browsers
+
+	if (typeof module === 'object' && module.exports) {
+	  module.exports = LRUCache
+	} else {
+	  // just set the global for non-node platforms.
+	  this.LRUCache = LRUCache
+	}
+
+	function hOP (obj, key) {
+	  return Object.prototype.hasOwnProperty.call(obj, key)
+	}
+
+	function naiveLength () { return 1 }
+
+	function LRUCache (options) {
+	  if (!(this instanceof LRUCache))
+	    return new LRUCache(options)
+
+	  if (typeof options === 'number')
+	    options = { max: options }
+
+	  if (!options)
+	    options = {}
+
+	  this._max = options.max
+	  // Kind of weird to have a default max of Infinity, but oh well.
+	  if (!this._max || !(typeof this._max === "number") || this._max <= 0 )
+	    this._max = Infinity
+
+	  this._lengthCalculator = options.length || naiveLength
+	  if (typeof this._lengthCalculator !== "function")
+	    this._lengthCalculator = naiveLength
+
+	  this._allowStale = options.stale || false
+	  this._maxAge = options.maxAge || null
+	  this._dispose = options.dispose
+	  this.reset()
+	}
+
+	// resize the cache when the max changes.
+	Object.defineProperty(LRUCache.prototype, "max",
+	  { set : function (mL) {
+	      if (!mL || !(typeof mL === "number") || mL <= 0 ) mL = Infinity
+	      this._max = mL
+	      if (this._length > this._max) trim(this)
+	    }
+	  , get : function () { return this._max }
+	  , enumerable : true
+	  })
+
+	// resize the cache when the lengthCalculator changes.
+	Object.defineProperty(LRUCache.prototype, "lengthCalculator",
+	  { set : function (lC) {
+	      if (typeof lC !== "function") {
+	        this._lengthCalculator = naiveLength
+	        this._length = this._itemCount
+	        for (var key in this._cache) {
+	          this._cache[key].length = 1
+	        }
+	      } else {
+	        this._lengthCalculator = lC
+	        this._length = 0
+	        for (var key in this._cache) {
+	          this._cache[key].length = this._lengthCalculator(this._cache[key].value)
+	          this._length += this._cache[key].length
+	        }
+	      }
+
+	      if (this._length > this._max) trim(this)
+	    }
+	  , get : function () { return this._lengthCalculator }
+	  , enumerable : true
+	  })
+
+	Object.defineProperty(LRUCache.prototype, "length",
+	  { get : function () { return this._length }
+	  , enumerable : true
+	  })
+
+
+	Object.defineProperty(LRUCache.prototype, "itemCount",
+	  { get : function () { return this._itemCount }
+	  , enumerable : true
+	  })
+
+	LRUCache.prototype.forEach = function (fn, thisp) {
+	  thisp = thisp || this
+	  var i = 0;
+	  for (var k = this._mru - 1; k >= 0 && i < this._itemCount; k--) if (this._lruList[k]) {
+	    i++
+	    var hit = this._lruList[k]
+	    if (this._maxAge && (Date.now() - hit.now > this._maxAge)) {
+	      del(this, hit)
+	      if (!this._allowStale) hit = undefined
+	    }
+	    if (hit) {
+	      fn.call(thisp, hit.value, hit.key, this)
+	    }
+	  }
+	}
+
+	LRUCache.prototype.keys = function () {
+	  var keys = new Array(this._itemCount)
+	  var i = 0
+	  for (var k = this._mru - 1; k >= 0 && i < this._itemCount; k--) if (this._lruList[k]) {
+	    var hit = this._lruList[k]
+	    keys[i++] = hit.key
+	  }
+	  return keys
+	}
+
+	LRUCache.prototype.values = function () {
+	  var values = new Array(this._itemCount)
+	  var i = 0
+	  for (var k = this._mru - 1; k >= 0 && i < this._itemCount; k--) if (this._lruList[k]) {
+	    var hit = this._lruList[k]
+	    values[i++] = hit.value
+	  }
+	  return values
+	}
+
+	LRUCache.prototype.reset = function () {
+	  if (this._dispose && this._cache) {
+	    for (var k in this._cache) {
+	      this._dispose(k, this._cache[k].value)
+	    }
+	  }
+
+	  this._cache = Object.create(null) // hash of items by key
+	  this._lruList = Object.create(null) // list of items in order of use recency
+	  this._mru = 0 // most recently used
+	  this._lru = 0 // least recently used
+	  this._length = 0 // number of items in the list
+	  this._itemCount = 0
+	}
+
+	// Provided for debugging/dev purposes only. No promises whatsoever that
+	// this API stays stable.
+	LRUCache.prototype.dump = function () {
+	  return this._cache
+	}
+
+	LRUCache.prototype.dumpLru = function () {
+	  return this._lruList
+	}
+
+	LRUCache.prototype.set = function (key, value) {
+	  if (hOP(this._cache, key)) {
+	    // dispose of the old one before overwriting
+	    if (this._dispose) this._dispose(key, this._cache[key].value)
+	    if (this._maxAge) this._cache[key].now = Date.now()
+	    this._cache[key].value = value
+	    this.get(key)
+	    return true
+	  }
+
+	  var len = this._lengthCalculator(value)
+	  var age = this._maxAge ? Date.now() : 0
+	  var hit = new Entry(key, value, this._mru++, len, age)
+
+	  // oversized objects fall out of cache automatically.
+	  if (hit.length > this._max) {
+	    if (this._dispose) this._dispose(key, value)
+	    return false
+	  }
+
+	  this._length += hit.length
+	  this._lruList[hit.lu] = this._cache[key] = hit
+	  this._itemCount ++
+
+	  if (this._length > this._max) trim(this)
+	  return true
+	}
+
+	LRUCache.prototype.has = function (key) {
+	  if (!hOP(this._cache, key)) return false
+	  var hit = this._cache[key]
+	  if (this._maxAge && (Date.now() - hit.now > this._maxAge)) {
+	    return false
+	  }
+	  return true
+	}
+
+	LRUCache.prototype.get = function (key) {
+	  return get(this, key, true)
+	}
+
+	LRUCache.prototype.peek = function (key) {
+	  return get(this, key, false)
+	}
+
+	LRUCache.prototype.pop = function () {
+	  var hit = this._lruList[this._lru]
+	  del(this, hit)
+	  return hit || null
+	}
+
+	LRUCache.prototype.del = function (key) {
+	  del(this, this._cache[key])
+	}
+
+	function get (self, key, doUse) {
+	  var hit = self._cache[key]
+	  if (hit) {
+	    if (self._maxAge && (Date.now() - hit.now > self._maxAge)) {
+	      del(self, hit)
+	      if (!self._allowStale) hit = undefined
+	    } else {
+	      if (doUse) use(self, hit)
+	    }
+	    if (hit) hit = hit.value
+	  }
+	  return hit
+	}
+
+	function use (self, hit) {
+	  shiftLU(self, hit)
+	  hit.lu = self._mru ++
+	  if (self._maxAge) hit.now = Date.now()
+	  self._lruList[hit.lu] = hit
+	}
+
+	function trim (self) {
+	  while (self._lru < self._mru && self._length > self._max)
+	    del(self, self._lruList[self._lru])
+	}
+
+	function shiftLU (self, hit) {
+	  delete self._lruList[ hit.lu ]
+	  while (self._lru < self._mru && !self._lruList[self._lru]) self._lru ++
+	}
+
+	function del (self, hit) {
+	  if (hit) {
+	    if (self._dispose) self._dispose(hit.key, hit.value)
+	    self._length -= hit.length
+	    self._itemCount --
+	    delete self._cache[ hit.key ]
+	    shiftLU(self, hit)
+	  }
+	}
+
+	// classy, since V8 prefers predictable objects.
+	function Entry (key, value, lu, length, now) {
+	  this.key = key
+	  this.value = value
+	  this.lu = lu
+	  this.length = length
+	  this.now = now
+	}
+
+	})()
+
+
+/***/ },
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(process) {/*!
@@ -19076,265 +19335,6 @@ var payshares =
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(58)))
 
 /***/ },
-/* 48 */
-/***/ function(module, exports, __webpack_require__) {
-
-	;(function () { // closure for web browsers
-
-	if (typeof module === 'object' && module.exports) {
-	  module.exports = LRUCache
-	} else {
-	  // just set the global for non-node platforms.
-	  this.LRUCache = LRUCache
-	}
-
-	function hOP (obj, key) {
-	  return Object.prototype.hasOwnProperty.call(obj, key)
-	}
-
-	function naiveLength () { return 1 }
-
-	function LRUCache (options) {
-	  if (!(this instanceof LRUCache))
-	    return new LRUCache(options)
-
-	  if (typeof options === 'number')
-	    options = { max: options }
-
-	  if (!options)
-	    options = {}
-
-	  this._max = options.max
-	  // Kind of weird to have a default max of Infinity, but oh well.
-	  if (!this._max || !(typeof this._max === "number") || this._max <= 0 )
-	    this._max = Infinity
-
-	  this._lengthCalculator = options.length || naiveLength
-	  if (typeof this._lengthCalculator !== "function")
-	    this._lengthCalculator = naiveLength
-
-	  this._allowStale = options.stale || false
-	  this._maxAge = options.maxAge || null
-	  this._dispose = options.dispose
-	  this.reset()
-	}
-
-	// resize the cache when the max changes.
-	Object.defineProperty(LRUCache.prototype, "max",
-	  { set : function (mL) {
-	      if (!mL || !(typeof mL === "number") || mL <= 0 ) mL = Infinity
-	      this._max = mL
-	      if (this._length > this._max) trim(this)
-	    }
-	  , get : function () { return this._max }
-	  , enumerable : true
-	  })
-
-	// resize the cache when the lengthCalculator changes.
-	Object.defineProperty(LRUCache.prototype, "lengthCalculator",
-	  { set : function (lC) {
-	      if (typeof lC !== "function") {
-	        this._lengthCalculator = naiveLength
-	        this._length = this._itemCount
-	        for (var key in this._cache) {
-	          this._cache[key].length = 1
-	        }
-	      } else {
-	        this._lengthCalculator = lC
-	        this._length = 0
-	        for (var key in this._cache) {
-	          this._cache[key].length = this._lengthCalculator(this._cache[key].value)
-	          this._length += this._cache[key].length
-	        }
-	      }
-
-	      if (this._length > this._max) trim(this)
-	    }
-	  , get : function () { return this._lengthCalculator }
-	  , enumerable : true
-	  })
-
-	Object.defineProperty(LRUCache.prototype, "length",
-	  { get : function () { return this._length }
-	  , enumerable : true
-	  })
-
-
-	Object.defineProperty(LRUCache.prototype, "itemCount",
-	  { get : function () { return this._itemCount }
-	  , enumerable : true
-	  })
-
-	LRUCache.prototype.forEach = function (fn, thisp) {
-	  thisp = thisp || this
-	  var i = 0;
-	  for (var k = this._mru - 1; k >= 0 && i < this._itemCount; k--) if (this._lruList[k]) {
-	    i++
-	    var hit = this._lruList[k]
-	    if (this._maxAge && (Date.now() - hit.now > this._maxAge)) {
-	      del(this, hit)
-	      if (!this._allowStale) hit = undefined
-	    }
-	    if (hit) {
-	      fn.call(thisp, hit.value, hit.key, this)
-	    }
-	  }
-	}
-
-	LRUCache.prototype.keys = function () {
-	  var keys = new Array(this._itemCount)
-	  var i = 0
-	  for (var k = this._mru - 1; k >= 0 && i < this._itemCount; k--) if (this._lruList[k]) {
-	    var hit = this._lruList[k]
-	    keys[i++] = hit.key
-	  }
-	  return keys
-	}
-
-	LRUCache.prototype.values = function () {
-	  var values = new Array(this._itemCount)
-	  var i = 0
-	  for (var k = this._mru - 1; k >= 0 && i < this._itemCount; k--) if (this._lruList[k]) {
-	    var hit = this._lruList[k]
-	    values[i++] = hit.value
-	  }
-	  return values
-	}
-
-	LRUCache.prototype.reset = function () {
-	  if (this._dispose && this._cache) {
-	    for (var k in this._cache) {
-	      this._dispose(k, this._cache[k].value)
-	    }
-	  }
-
-	  this._cache = Object.create(null) // hash of items by key
-	  this._lruList = Object.create(null) // list of items in order of use recency
-	  this._mru = 0 // most recently used
-	  this._lru = 0 // least recently used
-	  this._length = 0 // number of items in the list
-	  this._itemCount = 0
-	}
-
-	// Provided for debugging/dev purposes only. No promises whatsoever that
-	// this API stays stable.
-	LRUCache.prototype.dump = function () {
-	  return this._cache
-	}
-
-	LRUCache.prototype.dumpLru = function () {
-	  return this._lruList
-	}
-
-	LRUCache.prototype.set = function (key, value) {
-	  if (hOP(this._cache, key)) {
-	    // dispose of the old one before overwriting
-	    if (this._dispose) this._dispose(key, this._cache[key].value)
-	    if (this._maxAge) this._cache[key].now = Date.now()
-	    this._cache[key].value = value
-	    this.get(key)
-	    return true
-	  }
-
-	  var len = this._lengthCalculator(value)
-	  var age = this._maxAge ? Date.now() : 0
-	  var hit = new Entry(key, value, this._mru++, len, age)
-
-	  // oversized objects fall out of cache automatically.
-	  if (hit.length > this._max) {
-	    if (this._dispose) this._dispose(key, value)
-	    return false
-	  }
-
-	  this._length += hit.length
-	  this._lruList[hit.lu] = this._cache[key] = hit
-	  this._itemCount ++
-
-	  if (this._length > this._max) trim(this)
-	  return true
-	}
-
-	LRUCache.prototype.has = function (key) {
-	  if (!hOP(this._cache, key)) return false
-	  var hit = this._cache[key]
-	  if (this._maxAge && (Date.now() - hit.now > this._maxAge)) {
-	    return false
-	  }
-	  return true
-	}
-
-	LRUCache.prototype.get = function (key) {
-	  return get(this, key, true)
-	}
-
-	LRUCache.prototype.peek = function (key) {
-	  return get(this, key, false)
-	}
-
-	LRUCache.prototype.pop = function () {
-	  var hit = this._lruList[this._lru]
-	  del(this, hit)
-	  return hit || null
-	}
-
-	LRUCache.prototype.del = function (key) {
-	  del(this, this._cache[key])
-	}
-
-	function get (self, key, doUse) {
-	  var hit = self._cache[key]
-	  if (hit) {
-	    if (self._maxAge && (Date.now() - hit.now > self._maxAge)) {
-	      del(self, hit)
-	      if (!self._allowStale) hit = undefined
-	    } else {
-	      if (doUse) use(self, hit)
-	    }
-	    if (hit) hit = hit.value
-	  }
-	  return hit
-	}
-
-	function use (self, hit) {
-	  shiftLU(self, hit)
-	  hit.lu = self._mru ++
-	  if (self._maxAge) hit.now = Date.now()
-	  self._lruList[hit.lu] = hit
-	}
-
-	function trim (self) {
-	  while (self._lru < self._mru && self._length > self._max)
-	    del(self, self._lruList[self._lru])
-	}
-
-	function shiftLU (self, hit) {
-	  delete self._lruList[ hit.lu ]
-	  while (self._lru < self._mru && !self._lruList[self._lru]) self._lru ++
-	}
-
-	function del (self, hit) {
-	  if (hit) {
-	    if (self._dispose) self._dispose(hit.key, hit.value)
-	    self._length -= hit.length
-	    self._itemCount --
-	    delete self._cache[ hit.key ]
-	    shiftLU(self, hit)
-	  }
-	}
-
-	// classy, since V8 prefers predictable objects.
-	function Entry (key, value, lu, length, now) {
-	  this.key = key
-	  this.value = value
-	  this.lu = lu
-	  this.length = length
-	  this.now = now
-	}
-
-	})()
-
-
-/***/ },
 /* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -20437,7 +20437,7 @@ var payshares =
 
 	}())
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 52 */
@@ -20474,7 +20474,7 @@ var payshares =
 	  return createHash(alg)
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 53 */
@@ -20522,7 +20522,7 @@ var payshares =
 	}
 
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 54 */
@@ -20611,7 +20611,7 @@ var payshares =
 	  return exports
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 55 */
@@ -21796,7 +21796,7 @@ var payshares =
 	    }
 	  } else if (true) {
 	    // Node.js.
-	    crypto = __webpack_require__(39);
+	    crypto = __webpack_require__(40);
 	    if (crypto) {
 	      nacl.setPRNG(function(x, n) {
 	        var i, v = crypto.randomBytes(n);
@@ -21808,7 +21808,7 @@ var payshares =
 
 	})(typeof module !== 'undefined' && module.exports ? module.exports : (window.nacl = window.nacl || {}));
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 56 */
@@ -22031,7 +22031,7 @@ var payshares =
 
 
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 58 */
@@ -22564,120 +22564,6 @@ var payshares =
 /* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_RESULT__;// Copyright Joyent, Inc. and other Node contributors.
-	//
-	// Permission is hereby granted, free of charge, to any person obtaining a
-	// copy of this software and associated documentation files (the
-	// "Software"), to deal in the Software without restriction, including
-	// without limitation the rights to use, copy, modify, merge, publish,
-	// distribute, sublicense, and/or sell copies of the Software, and to permit
-	// persons to whom the Software is furnished to do so, subject to the
-	// following conditions:
-	//
-	// The above copyright notice and this permission notice shall be included
-	// in all copies or substantial portions of the Software.
-	//
-	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-	// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-	// Query String Utilities
-
-	!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(require, exports, module, undefined) {
-	"use strict";
-
-	var QueryString = exports;
-
-	function charCode(c) {
-	  return c.charCodeAt(0);
-	}
-
-	QueryString.unescape = decodeURIComponent;
-	QueryString.escape = encodeURIComponent;
-
-	var stringifyPrimitive = function(v) {
-	  switch (typeof v) {
-	    case 'string':
-	      return v;
-
-	    case 'boolean':
-	      return v ? 'true' : 'false';
-
-	    case 'number':
-	      return isFinite(v) ? v : '';
-
-	    default:
-	      return '';
-	  }
-	};
-
-
-	QueryString.stringify = QueryString.encode = function(obj, sep, eq, name) {
-	  sep = sep || '&';
-	  eq = eq || '=';
-	  obj = (obj === null) ? undefined : obj;
-
-	  switch (typeof obj) {
-	    case 'object':
-	      return Object.keys(obj).map(function(k) {
-	        if (Array.isArray(obj[k])) {
-	          return obj[k].map(function(v) {
-	            return QueryString.escape(stringifyPrimitive(k)) +
-	                   eq +
-	                   QueryString.escape(stringifyPrimitive(v));
-	          }).join(sep);
-	        } else {
-	          return QueryString.escape(stringifyPrimitive(k)) +
-	                 eq +
-	                 QueryString.escape(stringifyPrimitive(obj[k]));
-	        }
-	      }).join(sep);
-
-	    default:
-	      if (!name) return '';
-	      return QueryString.escape(stringifyPrimitive(name)) + eq +
-	             QueryString.escape(stringifyPrimitive(obj));
-	  }
-	};
-
-	// Parse a key=val string.
-	QueryString.parse = QueryString.decode = function(qs, sep, eq) {
-	  sep = sep || '&';
-	  eq = eq || '=';
-	  var obj = {};
-
-	  if (typeof qs !== 'string' || qs.length === 0) {
-	    return obj;
-	  }
-
-	  qs.split(sep).forEach(function(kvp) {
-	    var x = kvp.split(eq);
-	    var k = QueryString.unescape(x[0], true);
-	    var v = QueryString.unescape(x.slice(1).join(eq), true);
-
-	    if (!(k in obj)) {
-	      obj[k] = v;
-	    } else if (!Array.isArray(obj[k])) {
-	      obj[k] = [obj[k], v];
-	    } else {
-	      obj[k].push(v);
-	    }
-	  });
-
-	  return obj;
-	};
-
-	}.call(exports, __webpack_require__, exports, module)), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;var require;/* WEBPACK VAR INJECTION */(function(module) {/*! http://mths.be/punycode by @mathias */
 	;(function(root) {
 
@@ -23192,6 +23078,120 @@ var payshares =
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(75)(module)))
 
 /***/ },
+/* 65 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;// Copyright Joyent, Inc. and other Node contributors.
+	//
+	// Permission is hereby granted, free of charge, to any person obtaining a
+	// copy of this software and associated documentation files (the
+	// "Software"), to deal in the Software without restriction, including
+	// without limitation the rights to use, copy, modify, merge, publish,
+	// distribute, sublicense, and/or sell copies of the Software, and to permit
+	// persons to whom the Software is furnished to do so, subject to the
+	// following conditions:
+	//
+	// The above copyright notice and this permission notice shall be included
+	// in all copies or substantial portions of the Software.
+	//
+	// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+	// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+	// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+	// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+	// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+	// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+	// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+	// Query String Utilities
+
+	!(__WEBPACK_AMD_DEFINE_RESULT__ = (function(require, exports, module, undefined) {
+	"use strict";
+
+	var QueryString = exports;
+
+	function charCode(c) {
+	  return c.charCodeAt(0);
+	}
+
+	QueryString.unescape = decodeURIComponent;
+	QueryString.escape = encodeURIComponent;
+
+	var stringifyPrimitive = function(v) {
+	  switch (typeof v) {
+	    case 'string':
+	      return v;
+
+	    case 'boolean':
+	      return v ? 'true' : 'false';
+
+	    case 'number':
+	      return isFinite(v) ? v : '';
+
+	    default:
+	      return '';
+	  }
+	};
+
+
+	QueryString.stringify = QueryString.encode = function(obj, sep, eq, name) {
+	  sep = sep || '&';
+	  eq = eq || '=';
+	  obj = (obj === null) ? undefined : obj;
+
+	  switch (typeof obj) {
+	    case 'object':
+	      return Object.keys(obj).map(function(k) {
+	        if (Array.isArray(obj[k])) {
+	          return obj[k].map(function(v) {
+	            return QueryString.escape(stringifyPrimitive(k)) +
+	                   eq +
+	                   QueryString.escape(stringifyPrimitive(v));
+	          }).join(sep);
+	        } else {
+	          return QueryString.escape(stringifyPrimitive(k)) +
+	                 eq +
+	                 QueryString.escape(stringifyPrimitive(obj[k]));
+	        }
+	      }).join(sep);
+
+	    default:
+	      if (!name) return '';
+	      return QueryString.escape(stringifyPrimitive(name)) + eq +
+	             QueryString.escape(stringifyPrimitive(obj));
+	  }
+	};
+
+	// Parse a key=val string.
+	QueryString.parse = QueryString.decode = function(qs, sep, eq) {
+	  sep = sep || '&';
+	  eq = eq || '=';
+	  var obj = {};
+
+	  if (typeof qs !== 'string' || qs.length === 0) {
+	    return obj;
+	  }
+
+	  qs.split(sep).forEach(function(kvp) {
+	    var x = kvp.split(eq);
+	    var k = QueryString.unescape(x[0], true);
+	    var v = QueryString.unescape(x.slice(1).join(eq), true);
+
+	    if (!(k in obj)) {
+	      obj[k] = v;
+	    } else if (!Array.isArray(obj[k])) {
+	      obj[k] = [obj[k], v];
+	    } else {
+	      obj[k].push(v);
+	    }
+	  });
+
+	  return obj;
+	};
+
+	}.call(exports, __webpack_require__, exports, module)), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ },
 /* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -23577,7 +23577,7 @@ var payshares =
 
 	module.exports = { hash: hash };
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 71 */
@@ -25201,7 +25201,7 @@ var payshares =
 	  if (!test) throw new Error(message || 'Failed assertion')
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(38).Buffer))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39).Buffer))
 
 /***/ },
 /* 77 */
