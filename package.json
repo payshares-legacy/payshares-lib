@@ -2,6 +2,20 @@
   "name": "payshares-lib",
   "version": "0.10.3",
   "description": "Payshares JavaScript client library",
+  "author": {
+    "name": "Kedia Corporation",
+    "email": "support@kedia.co"
+  },
+  "keywords": [
+    "payshares",
+    "xps",
+    "cryptocurrency",
+    "money",
+    "currency",
+    "virtual",
+    "fintech"
+  ]
+  "license": "ISC",
   "files": [
     "src/js/*",
     "bin/*",

@@ -2,35 +2,33 @@
 
 `payshares-lib` connects to the Payshares network via the WebSocket protocol.  It runs in Node.js or in the browser.
 
-
-
-###Use payshares-lib for:
-
+Use payshares-lib for:
+----------------------
 + Connecting to a local or remote paysharesd in JavaScript (Node.js or browser)
-+ Issuing [paysharesd API](https://www.payshares.co/api/) requests
++ Issuing [paysharesd API](https://www.payshares.org/api/) requests
 + Listening to events on the payshares network (transaction, ledger, etc.)
 + Signing and submitting transactions to the payshares network
 
-###In this file:
-
+In this file:
+-------------
 1. Overview
 2. [Getting `payshares-lib`](README.md#getting-payshares-lib)
 3. [Quickstart](README.md#quickstart)
 4. [Running tests](https://github.com/payshares/payshares-lib#running-tests)
 
-###For additional documentation see:
-
+For additional documentation see:
+---------------------------------
 1. [The `payshares-lib` Guides (docs/GUIDES.md)](docs/GUIDES.md)
 2. [The `payshares-lib` API Reference (docs/REFERENCE.md)](docs/REFERENCE.md)
 
 
-###Also see:
+Also see:
+---------
++ https://wiki.payshares.org/
++ https://www.payshares.org/
 
-+ https://wiki.payshares.co/
-+ https://www.payshares.co/
-
-##Getting `payshares-lib`
-
+Getting `payshares-lib`
+-----------------------
 **Via npm for Node.js**
 
 ```
@@ -48,8 +46,8 @@
 
 Then use the minified `build/payshares-*-min.js` in your webpage
 
-##Quickstart
-
+Quickstart
+----------
 `Remote` ([remote.js](https://github.com/payshares/payshares-lib/blob/develop/src/js/payshares/remote.js)) is the module responsible for managing connections to `paysharesd` servers:
 
 ```js
@@ -83,8 +81,8 @@ remote.connect(function() {
 
 See [The `payshares-lib` Guides](docs/GUIDES.md) and [The `payshares-lib` API Reference](docs/REFERENCE.md) for walkthroughs and details about all of the available functions and options.
 
-##Running tests
-
+Running tests
+-------------
 1. Clone the repository
 
 2. `cd` into the repository and install dependencies with `npm install`
