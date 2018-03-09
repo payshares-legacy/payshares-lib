@@ -14,7 +14,7 @@
     "currency",
     "virtual",
     "fintech"
-  ]
+  ],
   "license": "ISC",
   "files": [
     "src/js/*",

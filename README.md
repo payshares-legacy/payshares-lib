@@ -1,4 +1,5 @@
-#The Payshares JavaScript Library
+The Payshares JavaScript Library
+================================
 
 `payshares-lib` connects to the Payshares network via the WebSocket protocol.  It runs in Node.js or in the browser.
 
