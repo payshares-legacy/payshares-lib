@@ -1,6 +1,8 @@
 The Payshares JavaScript Library
 ================================
 
+[![Build Status](https://travis-ci.org/Payshares/payshares-lib.svg?branch=master)](https://travis-ci.org/Payshares/payshares-lib)
+
 `payshares-lib` connects to the Payshares network via the WebSocket protocol.  It runs in Node.js or in the browser.
 
 Use payshares-lib for:
