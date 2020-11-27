@@ -168,11 +168,11 @@ OrderBook.prototype.is_valid = function () {
 };
 
 OrderBook.prototype.trade = function(type) {
-  var tradeXpr = '0'
+  var tradeXps = '0'
   + ((this['_currency_' + type] === 'XPS') ? '' : '/'
      + this['_currency_' + type ] + '/'
      + this['_issuer_' + type]);
-  return Amount.from_json(tradeXpr);
+  return Amount.from_json(tradeXps);
 };
 
 /**
