@@ -28,7 +28,7 @@ For additional documentation see:
 Also see:
 ---------
 + https://wiki.payshares.org/
-+ https://www.payshares.org/
++ https://payshares.org/
 
 Getting `payshares-lib`
 -----------------------
